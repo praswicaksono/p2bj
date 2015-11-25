@@ -33,7 +33,7 @@ class LoginForm extends AbstractType
             'username',
             'text',
             [
-            'constraints' => new Assert\NotBlank()
+            'constraints' => new Assert\NotBlank(),'class' => 'gui-input'
             ]
         )->add(
             'password',
