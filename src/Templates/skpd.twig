@@ -1,0 +1,13 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        {% for message in app.session.getFlashBag.get('message') %}
+            <strong> {{ message }} </strong>
+        {% endfor %}
+        <form action="{{app.url_generator.generate('skpd') }}" method="post" enctype="multipart/form-data">
+            {{ form_widget(form) }}
+        </form>
+    </body>
+</html>

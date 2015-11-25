@@ -1,0 +1,4 @@
+suites:
+  core_suite:
+    namespace: Jowy\P2bj
+    psr4_prefix: Jowy\P2bj

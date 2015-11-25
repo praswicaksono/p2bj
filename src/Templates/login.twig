@@ -1,0 +1,13 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+    {% for message in app.session.getFlashBag.get('message') %}
+        <strong> {{ message }} </strong>
+    {% endfor %}
+    <form action="{{app.url_generator.generate('login') }}" method="post">
+        {{ form_widget(form) }}
+    </form>
+    </body>
+</html>
