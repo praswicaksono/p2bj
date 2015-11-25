@@ -33,19 +33,21 @@ class LoginForm extends AbstractType
             'username',
             'text',
             [
-            'constraints' => new Assert\NotBlank(), 'attr' => ['class' => 'gui-input'],'label' => 'Shit', 'label_attr' =>
+            'constraints' => new Assert\NotBlank(), 'attr' => ['class' => 'gui-input'],'label' => 'Username', 'label_attr' =>
             ['class' => 'field-label text-muted fs18 mb10']
             ]
         )->add(
             'password',
             'password',
             [
-                'constraints' => new Assert\NotBlank(),'attr' => ['class' => 'gui-input']
+                'constraints' => new Assert\NotBlank(),'attr' => ['class' => 'gui-input'],'label' => 'password', 'label_attr' =>
+            ['class' => 'field-label text-muted fs18 mb10']
             ]
-        )->add(
+        )
+        ->add(
             'login',
             'submit',[
-                'attr' => ['class' => 'button btn-primary mr10 pull-right']
+                'attr' => ['class' => 'shit'] 
             ]
         );
     }
