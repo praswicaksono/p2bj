@@ -11,9 +11,16 @@
         {#</form>#}
     {#</body>#}
 {#</html>#}
+{% extends 'layouts/head.twig' %}
 
-{% include "layouts/head.twig" %}
+{% block content %}
+    {% for message in app.session.getFlashBag.get('message') %}
+    {% endfor %}
+    HEllo World
+    <form action="{{app.url_generator.generate('skpd') }}" method="post" enctype="multipart/form-data">
+        {{ form_widget(form) }}
+    </form>
+{% endblock %}
 
-
-
-{% include "layouts/foot.twig" %}
+{#{% include "layouts/head.twig" %}#}
+{#{% include "layouts/foot.twig" %}#}
