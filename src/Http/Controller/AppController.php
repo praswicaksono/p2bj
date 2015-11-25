@@ -77,7 +77,9 @@ class AppController implements ControllerProviderInterface
 
         if ($request->getMethod() === 'GET') {
             return $this->app['twig']->render('skpd.twig', ['form' => $formBuilder->createView()]);
+//            return $this->app->redirect($this->app["url_generator"]->generate("login"));
         }
+
 
         $formBuilder->handleRequest($request);
 

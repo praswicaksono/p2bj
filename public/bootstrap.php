@@ -10,7 +10,7 @@ $app->register(
             'driver' => 'pdo_mysql',
             'host' => '127.0.0.1',
             'username' => 'root',
-            'password' => '123',
+            'password' => 'faster',
             'dbname' => 'p2bj'
         ]
     ]
