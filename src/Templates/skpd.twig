@@ -14,12 +14,193 @@
 {% extends 'layouts/head.twig' %}
 
 {% block content %}
-    {% for message in app.session.getFlashBag.get('message') %}
-    {% endfor %}
-    HEllo World
-    <form action="{{app.url_generator.generate('skpd') }}" method="post" enctype="multipart/form-data">
-        {{ form_widget(form) }}
-    </form>
+    <br>
+    <h1 class="lh30 mt15 text-center">PAKET BARU</h1>
+    <p class="lead mb30 text-center">Pembuatan Usulan Paket Pengadaan</p>
+    <hr>
+<div class="row">
+    <div class="col-md-9 center-block">
+
+                {% for message in app.session.getFlashBag.get('message') %}
+                    <strong> <div class="alert alert-danger alert-dismissable" >
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            Whoops Something went wrong
+                        </div>
+                    </strong>
+                {% endfor %}
+
+            <div class="admin-form theme-primary">
+                <div class="panel">
+                    <form action="{{app.url_generator.generate('skpd') }}" method="post" enctype="multipart/form-data">
+                        <div class="panel-body">
+                            <div class="section-divider mb40 mt20"><span> Lengkapi Data </span></div>
+
+                            {# Start Nama Paket#}
+                            <div class="section">
+                                <label for="firstname" class="field prepend-icon">
+                                    {{ form_widget(form.namaPaket) }}
+                                    <label for="firstname" class="field-icon"><i class="fa fa-user"></i></label>
+                                </label>
+                            </div>
+                            {#End Sumber Dana#}
+
+                            {#End Nama Paket#}
+                            <div class="section">
+                                <label class="field select">
+                                    <span>Sumber Dana</span>
+                                    {{ form_widget(form.sumberDana) }}
+                                </label>
+                            </div>
+                            {#Start Sumber Dana#}
+                            <br>
+                            {#START PAGU ANGGARAN#}
+                            <div class="section">
+                                <label class="field prepend-icon">
+                                    {#<span>Pagu Anggaran (Rp.)</span>#}
+                                    {{ form_widget(form.paguAnggraran) }}
+                                    <label for="paguAnggraran" class="field-icon">Rp.</label>
+                                </label>
+                                <span class="input-footer">Isi Dengan <strong>Angka.</strong> (Ex. 10000) </span>
+                            </div>
+                            {#END PAGU ANGGARAN#}
+
+                            {#START KODE REKENING#}
+                            <div class="section">
+                                <label class="field prepend-icon">
+                                    {{ form_widget(form.kodeRekening) }}
+                                    <label for="kodeRekening" class="field-icon"><i class="fa fa-credit-card"></i></label>
+                                </label>
+                            </div>
+                            {#END KODE REKENING#}
+
+                            {#START KODE RUP#}
+                            <div class="section">
+                                <label class="field prepend-icon">
+                                    {{ form_widget(form.kodeRup) }}
+                                    <label for="kodeRup" class="field-icon"><i class="fa fa-copy"></i></label>
+                                </label>
+                            </div>
+                            {#END KODE RUP#}
+
+                            {#START JENIS KONTRAK#}
+                            <div class="section">
+                                <label class="field prepend-icon">
+                                    {{ form_widget(form.jenisPembayaran) }}
+                                    <label for="jenisPembayaran" class="field-icon"><i class="fa fa-shopping-cart"></i></label>
+                                </label>
+                            </div>
+                            {#END JENIS KONTRAK#}
+
+                            <div class="section-divider mv40"><span> Berkas Lampiran ( Wajib Diisi )  </span></div>
+                            <div class="section"><span style="color:red">Kelengkapan Berkas (* Wajib Diisi, ** Jika Ada, File yang didukung : PDF)</span></div>
+
+                            <div class="section">
+                                <span>Surat Permintaan Lelang Dari SKPD (Nama PPK, NIP PPK, Kode Rekening) <strong style="color:red">*</strong></span>
+                                <label class="field file" for="file1">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenSuratPermintaanLelang) }}
+                                    <input class="gui-input" id="uploader1" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>HPS (Hasil Perkiraan Sendiri) <strong style="color:red">*</strong></span>
+                                <label class="field file" for="file2">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenHasilPerkiraanSendiri) }}
+                                    <input class="gui-input" id="uploader2" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>Cetak RUP dari Website SIRUP <strong style="color:red">*</strong></span>
+                                <label class="field file" for="file3">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenCetakRup) }}
+                                    <input class="gui-input" id="uploader3" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>KAK (Kerangka Acuan Kerja) <strong style="color:red">*</strong></span>
+                                <label class="field file" for="file4">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenKerangkaAcuanKerja) }}
+                                    <input class="gui-input" id="uploader4" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>BQ (Daftar Kuantitas) <strong style="color:red">*</strong></span>
+                                <label class="field file" for="file5">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenDaftarKuantitas) }}
+                                    <input class="gui-input" id="uploader5" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>Spesifikasi Teknis <strong style="color:red">*</strong></span>
+                                <label class="field file" for="file6">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenSpesifikasiTeknis) }}
+                                    <input class="gui-input" id="uploader6" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>Gambar <strong style="color:red">**</strong></span>
+                                <label class="field file" for="file7">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenGambar) }}
+                                    <input class="gui-input" id="uploader7" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>Rancangan Kontrak <strong style="color:red">*</strong></span>
+                                <label class="field file" for="file8">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenRancanganKontrak) }}
+                                    <input class="gui-input" id="uploader8" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>Syarat - Syarat Umum Kontrak <strong style="color:red">*</strong></span>
+                                <label class="field file" for="file9">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenSyaratSyaratUmumKontrak) }}
+                                    <input class="gui-input" id="uploader9" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>Syarat - Syarat Khusus Kontrak <strong style="color:red">*</strong></span>
+                                <label class="field file" for="file10">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenSyaratSyaratKhususKontrak) }}
+                                    <input class="gui-input" id="uploader10" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+
+                            <div class="section">
+                                <span>Dokumen Pendukung Lain <strong style="color:red">**</strong></span>
+                                <label class="field file" for="file11">
+                                    <span class="button btn-primary"> Choose File </span>
+                                    {{ form_widget(form.dokumenPendukungLain) }}
+                                    <input class="gui-input" id="uploader11" placeholder="Tidak Ada File Dipilih" readonly="" type="text">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="panel-footer text-right">
+                            {{ form_widget(form.kirim) }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
 {% endblock %}
 
 {#{% include "layouts/head.twig" %}#}
