@@ -15,42 +15,44 @@ class __TwigTemplate_791cb5599df1ff983c4fde2bb628fdbbbdec6d938c4e71982728f23296e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_87288728921ec595c4d0104fb1a90e82b964f7e9369a03e067b015ff45a1bc83 = $this->env->getExtension("native_profiler");
-        $__internal_87288728921ec595c4d0104fb1a90e82b964f7e9369a03e067b015ff45a1bc83->enter($__internal_87288728921ec595c4d0104fb1a90e82b964f7e9369a03e067b015ff45a1bc83_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "skpd.twig"));
+        $__internal_798ca212b0c1d7a6fa200cf330445315fe43dfe3b3a29a477e63dd315f00014b = $this->env->getExtension("native_profiler");
+        $__internal_798ca212b0c1d7a6fa200cf330445315fe43dfe3b3a29a477e63dd315f00014b->enter($__internal_798ca212b0c1d7a6fa200cf330445315fe43dfe3b3a29a477e63dd315f00014b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "skpd.twig"));
 
-        // line 1
-        echo "<html>
-    <head>
-
-    </head>
-    <body>
-        ";
-        // line 6
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "getFlashBag", array()), "get", array(0 => "message"), "method"));
-        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 7
-            echo "            <strong> ";
-            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
-            echo " </strong>
-        ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 9
-        echo "        <form action=\"";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "url_generator", array()), "generate", array(0 => "skpd"), "method"), "html", null, true);
-        echo "\" method=\"post\" enctype=\"multipart/form-data\">
-            ";
-        // line 10
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+        // line 2
+        echo "    ";
+        // line 3
         echo "
-        </form>
-    </body>
-</html>";
+    ";
+        // line 5
+        echo "    ";
+        // line 6
+        echo "        ";
+        // line 7
+        echo "            ";
+        // line 8
+        echo "        ";
+        // line 9
+        echo "        ";
+        // line 10
+        echo "            ";
+        // line 11
+        echo "        ";
+        // line 12
+        echo "    ";
+        // line 14
+        echo "
+";
+        // line 15
+        $this->loadTemplate("layouts/head.twig", "skpd.twig", 15)->display($context);
+        // line 16
+        echo "
+
+
+";
+        // line 19
+        $this->loadTemplate("layouts/foot.twig", "skpd.twig", 19)->display($context);
         
-        $__internal_87288728921ec595c4d0104fb1a90e82b964f7e9369a03e067b015ff45a1bc83->leave($__internal_87288728921ec595c4d0104fb1a90e82b964f7e9369a03e067b015ff45a1bc83_prof);
+        $__internal_798ca212b0c1d7a6fa200cf330445315fe43dfe3b3a29a477e63dd315f00014b->leave($__internal_798ca212b0c1d7a6fa200cf330445315fe43dfe3b3a29a477e63dd315f00014b_prof);
 
     }
 
@@ -66,19 +68,25 @@ class __TwigTemplate_791cb5599df1ff983c4fde2bb628fdbbbdec6d938c4e71982728f23296e
 
     public function getDebugInfo()
     {
-        return array (  47 => 10,  42 => 9,  33 => 7,  29 => 6,  22 => 1,);
+        return array (  53 => 19,  48 => 16,  46 => 15,  43 => 14,  41 => 12,  39 => 11,  37 => 10,  35 => 9,  33 => 8,  31 => 7,  29 => 6,  27 => 5,  24 => 3,  22 => 2,);
     }
 }
-/* <html>*/
-/*     <head>*/
+/* {#<html>#}*/
+/*     {#<head>#}*/
 /* */
-/*     </head>*/
-/*     <body>*/
-/*         {% for message in app.session.getFlashBag.get('message') %}*/
-/*             <strong> {{ message }} </strong>*/
-/*         {% endfor %}*/
-/*         <form action="{{app.url_generator.generate('skpd') }}" method="post" enctype="multipart/form-data">*/
-/*             {{ form_widget(form) }}*/
-/*         </form>*/
-/*     </body>*/
-/* </html>*/
+/*     {#</head>#}*/
+/*     {#<body>#}*/
+/*         {#{% for message in app.session.getFlashBag.get('message') %}#}*/
+/*             {#<strong> {{ message }} </strong>#}*/
+/*         {#{% endfor %}#}*/
+/*         {#<form action="{{app.url_generator.generate('skpd') }}" method="post" enctype="multipart/form-data">#}*/
+/*             {#{{ form_widget(form) }}#}*/
+/*         {#</form>#}*/
+/*     {#</body>#}*/
+/* {#</html>#}*/
+/* */
+/* {% include "layouts/head.twig" %}*/
+/* */
+/* */
+/* */
+/* {% include "layouts/foot.twig" %}*/

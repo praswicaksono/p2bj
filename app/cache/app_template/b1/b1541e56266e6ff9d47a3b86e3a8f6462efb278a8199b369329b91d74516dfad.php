@@ -15,8 +15,8 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce = $this->env->getExtension("native_profiler");
-        $__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce->enter($__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "login.twig"));
+        $__internal_1fd5bf7928a5fe1e3e8d43a3a7223767dc0784f2cc3905cef8e72543dd33ed8c = $this->env->getExtension("native_profiler");
+        $__internal_1fd5bf7928a5fe1e3e8d43a3a7223767dc0784f2cc3905cef8e72543dd33ed8c->enter($__internal_1fd5bf7928a5fe1e3e8d43a3a7223767dc0784f2cc3905cef8e72543dd33ed8c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "login.twig"));
 
         // line 2
         echo "    ";
@@ -239,8 +239,8 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
 <!-- BEGIN: PAGE SCRIPTS -->
 
 <!-- jQuery -->
-<script type=\"text/javascript\" src=\"vendor/jquery/jquery-1.11.1.min.js\"></script>
-<script type=\"text/javascript\" src=\"vendor/jquery/jquery_ui/jquery-ui.min.js\"></script>
+<script type=\"text/javascript\" src=\"assets/vendor/jquery/jquery-1.11.1.min.js\"></script>
+<script type=\"text/javascript\" src=\"assets/vendor/jquery/jquery_ui/jquery-ui.min.js\"></script>
 
 <!-- Bootstrap -->
 <script type=\"text/javascript\" src=\"assets/js/bootstrap/bootstrap.min.js\"></script>
@@ -288,7 +288,7 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
 
 ";
         
-        $__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce->leave($__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce_prof);
+        $__internal_1fd5bf7928a5fe1e3e8d43a3a7223767dc0784f2cc3905cef8e72543dd33ed8c->leave($__internal_1fd5bf7928a5fe1e3e8d43a3a7223767dc0784f2cc3905cef8e72543dd33ed8c_prof);
 
     }
 
@@ -467,8 +467,8 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
 /* <!-- BEGIN: PAGE SCRIPTS -->*/
 /* */
 /* <!-- jQuery -->*/
-/* <script type="text/javascript" src="vendor/jquery/jquery-1.11.1.min.js"></script>*/
-/* <script type="text/javascript" src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script>*/
+/* <script type="text/javascript" src="assets/vendor/jquery/jquery-1.11.1.min.js"></script>*/
+/* <script type="text/javascript" src="assets/vendor/jquery/jquery_ui/jquery-ui.min.js"></script>*/
 /* */
 /* <!-- Bootstrap -->*/
 /* <script type="text/javascript" src="assets/js/bootstrap/bootstrap.min.js"></script>*/
