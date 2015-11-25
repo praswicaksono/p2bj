@@ -15,8 +15,8 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_7467a14cccf26ae72dc5abbfd73ac9611768600c48da903e6983681a66ecfa40 = $this->env->getExtension("native_profiler");
-        $__internal_7467a14cccf26ae72dc5abbfd73ac9611768600c48da903e6983681a66ecfa40->enter($__internal_7467a14cccf26ae72dc5abbfd73ac9611768600c48da903e6983681a66ecfa40_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "login.twig"));
+        $__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce = $this->env->getExtension("native_profiler");
+        $__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce->enter($__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "login.twig"));
 
         // line 2
         echo "    ";
@@ -192,15 +192,31 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
         echo "
                                     </div>
-                                    <!-- end section -->
+                                    ";
+        // line 123
+        echo "                                    ";
+        // line 124
+        echo "                                    ";
+        // line 125
+        echo "
+                                    ";
+        // line 127
+        echo "                                    ";
+        // line 128
+        echo "                                    ";
+        // line 129
+        echo "                                    <!-- end section -->
 
                                 </div>
                             </div>
                         </div>
                         <!-- end .form-body section -->
                         <div class=\"panel-footer clearfix p10 ph15\">
-                            <button type=\"submit\" class=\"button btn-primary mr10 pull-right\">Register</button>
-                            <label class=\"switch block switch-primary pull-left input-align mt10\">
+                            ";
+        // line 137
+        echo "                            ";
+        // line 138
+        echo "                            <label class=\"switch block switch-primary pull-left input-align mt10\">
                                 <input type=\"checkbox\" name=\"remember\" id=\"remember\" checked>
                                 <label for=\"remember\" data-on=\"YES\" data-off=\"NO\"></label>
                                 <span>Remember me</span>
@@ -272,7 +288,7 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
 
 ";
         
-        $__internal_7467a14cccf26ae72dc5abbfd73ac9611768600c48da903e6983681a66ecfa40->leave($__internal_7467a14cccf26ae72dc5abbfd73ac9611768600c48da903e6983681a66ecfa40_prof);
+        $__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce->leave($__internal_984e43d11c2f80b2f1cf5a7922adf04a005a93d639cc5ae538c68f298953dcce_prof);
 
     }
 
@@ -288,7 +304,7 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
 
     public function getDebugInfo()
     {
-        return array (  192 => 120,  187 => 117,  185 => 116,  183 => 115,  181 => 114,  179 => 113,  177 => 112,  175 => 111,  173 => 110,  171 => 109,  169 => 108,  167 => 107,  165 => 106,  163 => 105,  161 => 104,  159 => 103,  151 => 97,  147 => 95,  136 => 89,  132 => 88,  125 => 83,  122 => 81,  120 => 80,  118 => 79,  116 => 78,  114 => 77,  112 => 76,  109 => 74,  107 => 73,  105 => 72,  102 => 70,  100 => 69,  44 => 14,  42 => 12,  40 => 11,  38 => 10,  36 => 9,  34 => 8,  32 => 7,  30 => 6,  28 => 5,  26 => 4,  24 => 3,  22 => 2,);
+        return array (  219 => 138,  217 => 137,  208 => 129,  206 => 128,  204 => 127,  201 => 125,  199 => 124,  197 => 123,  192 => 120,  187 => 117,  185 => 116,  183 => 115,  181 => 114,  179 => 113,  177 => 112,  175 => 111,  173 => 110,  171 => 109,  169 => 108,  167 => 107,  165 => 106,  163 => 105,  161 => 104,  159 => 103,  151 => 97,  147 => 95,  136 => 89,  132 => 88,  125 => 83,  122 => 81,  120 => 80,  118 => 79,  116 => 78,  114 => 77,  112 => 76,  109 => 74,  107 => 73,  105 => 72,  102 => 70,  100 => 69,  44 => 14,  42 => 12,  40 => 11,  38 => 10,  36 => 9,  34 => 8,  32 => 7,  30 => 6,  28 => 5,  26 => 4,  24 => 3,  22 => 2,);
     }
 }
 /* {#<html>#}*/
@@ -412,6 +428,13 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
 /*                                     <div class="section">*/
 /*                                         {{ form_widget(form) }}*/
 /*                                     </div>*/
+/*                                     {#<label for="login_username" class="field-label text-muted fs18 mb10">Username</label>#}*/
+/*                                     {#&#123;&#35;{{ form_label(form.username,{'attr':{'class':'field-label text-muted fs18 mb10'}}) }}&#35;&#125;#}*/
+/*                                     {#{{ form_widget(form.username,{'attr':{'class':'gui-input'}}) }}#}*/
+/* */
+/*                                     {#<label for="login_username" class="field-label text-muted fs18 mb10">Password</label>#}*/
+/*                                     {#&#123;&#35;{{ form_label(form.username,{'attr':{'class':'field-label text-muted fs18 mb10'}}) }}&#35;&#125;#}*/
+/*                                     {#{{ form_widget(form.password,{'attr':{'class':'gui-input'}}) }}#}*/
 /*                                     <!-- end section -->*/
 /* */
 /*                                 </div>*/
@@ -419,7 +442,8 @@ class __TwigTemplate_116e333b90659a8e3a22115d86959dc16a44563feaffcd9b6c16336f2eb
 /*                         </div>*/
 /*                         <!-- end .form-body section -->*/
 /*                         <div class="panel-footer clearfix p10 ph15">*/
-/*                             <button type="submit" class="button btn-primary mr10 pull-right">Register</button>*/
+/*                             {#<button type="submit" class="button btn-primary mr10 pull-right">Register</button>#}*/
+/*                             {#{{ form_widget(form.login,{'attr':{'class':'button btn-primary mr10 pull-right'}}) }}#}*/
 /*                             <label class="switch block switch-primary pull-left input-align mt10">*/
 /*                                 <input type="checkbox" name="remember" id="remember" checked>*/
 /*                                 <label for="remember" data-on="YES" data-off="NO"></label>*/

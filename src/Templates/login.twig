@@ -119,6 +119,13 @@
                                     <div class="section">
                                         {{ form_widget(form) }}
                                     </div>
+                                    {#<label for="login_username" class="field-label text-muted fs18 mb10">Username</label>#}
+                                    {#&#123;&#35;{{ form_label(form.username,{'attr':{'class':'field-label text-muted fs18 mb10'}}) }}&#35;&#125;#}
+                                    {#{{ form_widget(form.username,{'attr':{'class':'gui-input'}}) }}#}
+
+                                    {#<label for="login_username" class="field-label text-muted fs18 mb10">Password</label>#}
+                                    {#&#123;&#35;{{ form_label(form.username,{'attr':{'class':'field-label text-muted fs18 mb10'}}) }}&#35;&#125;#}
+                                    {#{{ form_widget(form.password,{'attr':{'class':'gui-input'}}) }}#}
                                     <!-- end section -->
 
                                 </div>
@@ -126,7 +133,8 @@
                         </div>
                         <!-- end .form-body section -->
                         <div class="panel-footer clearfix p10 ph15">
-                            <button type="submit" class="button btn-primary mr10 pull-right">Register</button>
+                            {#<button type="submit" class="button btn-primary mr10 pull-right">Register</button>#}
+                            {#{{ form_widget(form.login,{'attr':{'class':'button btn-primary mr10 pull-right'}}) }}#}
                             <label class="switch block switch-primary pull-left input-align mt10">
                                 <input type="checkbox" name="remember" id="remember" checked>
                                 <label for="remember" data-on="YES" data-off="NO"></label>
