@@ -136,6 +136,10 @@ class SkpdForm extends AbstractType
             'text',
             [
                 'constraints' => new Assert\NotBlank(),
+                'attr' => [
+                    'placeholder' => 'Tahun Anggaran',
+                    'class' => 'gui-input'
+                ]
             ]
         )->add(
             'paguAnggraran',
@@ -188,9 +192,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader1\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -204,9 +206,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader2\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -220,9 +220,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader3\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -236,9 +234,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader4\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -252,9 +248,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader5\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -268,9 +262,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader6\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )
@@ -302,9 +294,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader7\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -318,9 +308,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader8\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -334,9 +322,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader9\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -350,9 +336,7 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader10\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -366,16 +350,14 @@ class SkpdForm extends AbstractType
                     ])
                 ],
                 'attr' => [
-                    'class' => 'gui-file',
-                    'id' => 'file1',
-                    'onchange' => 'document.getElementById(\'uploader11\').value = this.value'
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
             'kirim',
             'submit',[
                     'attr' => [
-                        'class' => 'btn btn-success'
+                        'class' => 'btn btn-success mr10 pull-right'
                     ],'label' => 'Proses Pengajuan'
                 ]
         );

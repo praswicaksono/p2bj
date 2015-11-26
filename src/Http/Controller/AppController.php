@@ -42,10 +42,18 @@ class AppController implements ControllerProviderInterface
          */
         $controllers = $app['controllers_factory'];
 
-        $controllers->match('/login', [$this, 'loginAction'])->bind('login');
+        $controllers->match('/login', [$this, 'loginAction'])
+            ->before([$this,'checkUserRole'])
+            ->bind('login');
         $controllers->match('/skpd', [$this, 'skpdAction'])
             ->before([$this, 'checkSkpdRole'])
             ->bind('skpd');
+        $controllers->match('/', [$this, 'berandaAction'])
+            ->before([$this, 'checkUserRole'])
+            ->bind('beranda');
+        $controllers->match('/beranda', [$this, 'berandaAction'])
+            ->before([$this, 'checkUserRole'])
+            ->bind('beranda');
 
         return $controllers;
     }
@@ -70,6 +78,22 @@ class AppController implements ControllerProviderInterface
      * @param Request $request
      * @return mixed
      */
+
+    public function checkUserRole(){
+
+        $role = $this->app['session']->get('username');
+
+
+        if ($role['value'] == ''){
+            return $this->app->redirect($this->app["url_generator"]->generate("login"));
+        }
+    }
+
+    public function berandaAction(Request $request){
+        if ($request->getMethod() === 'GET') {
+            return $this->app['twig']->render('beranda.twig');
+        }
+    }
     public function skpdAction(Request $request)
     {
         $skpdForm = new SkpdForm();

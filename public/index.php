@@ -14,6 +14,6 @@ require "bootstrap.php";
 
 $app->mount('/', new \Jowy\P2bj\Http\Controller\AppController($app));
 
-$app->get('/', new \Jowy\P2bj\Http\Controller\AppController($app));
+//$app->get('/', new \Jowy\P2bj\Http\Controller\AppController($app));
 
 $app->run();
