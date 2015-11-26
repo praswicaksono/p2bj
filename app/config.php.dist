@@ -1,0 +1,40 @@
+<?php
+
+return [
+    'common' => [
+        'debug' => true,
+        'dokumen.path' => __DIR__ . '/../public/dokumen',
+        'monolog.logfile' => __DIR__ . '/../app/logs/development.log'
+    ],
+    'db' => [
+        'db.options' => [
+            'driver' => 'pdo_mysql',
+            'host' => '127.0.0.1',
+            'username' => 'root',
+            'password' => '123',
+            'dbname' => 'p2bj'
+        ]
+    ],
+    'orm' => [
+        'orm.em.options' => [
+            'mappings' => [
+                [
+                    'type' => 'annotation',
+                    'namespace' => 'Jowy\P2bj\Domain\Entity',
+                    'path' => __DIR__ . '/../src/Domain/Entity',
+                ]
+            ],
+        ],
+        'orm.proxies_dir' => __DIR__ . '/proxies',
+    ],
+    'twig' => [
+        'twig.path' => __DIR__ . '/../src/Templates',
+        'twig.options' => [
+            'cache' => __DIR__ . '/cache/app_template',
+            'auto_reload' => true
+        ]
+    ],
+    'profiler' => [
+        'profiler.cache_dir' => __DIR__ . '/cache/profiler'
+    ]
+];

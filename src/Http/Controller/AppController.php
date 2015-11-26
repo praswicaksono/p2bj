@@ -35,6 +35,10 @@ class AppController implements ControllerProviderInterface
         $this->app = $app;
     }
 
+    /**
+     * @param Application $app
+     * @return ControllerCollection
+     */
     public function connect(Application $app)
     {
         /**
@@ -45,13 +49,12 @@ class AppController implements ControllerProviderInterface
         $controllers->match('/login', [$this, 'loginAction'])
             ->before([$this,'checkUserRole'])
             ->bind('login');
+
         $controllers->match('/skpd', [$this, 'skpdAction'])
             ->before([$this, 'checkSkpdRole'])
             ->bind('skpd');
-        $controllers->match('/', [$this, 'berandaAction'])
-            ->before([$this, 'checkUserRole'])
-            ->bind('beranda');
-        $controllers->match('/beranda', [$this, 'berandaAction'])
+
+        $controllers->get('/beranda', [$this, 'berandaAction'])
             ->before([$this, 'checkUserRole'])
             ->bind('beranda');
 
@@ -76,24 +79,31 @@ class AppController implements ControllerProviderInterface
 
     /**
      * @param Request $request
-     * @return mixed
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|void
      */
-
-    public function checkUserRole(){
-
-        $role = $this->app['session']->get('username');
-
-
-        if ($role['value'] == ''){
+    public function checkUserRole(Request $request)
+    {
+        if (! $this->app['session']->has('username')) {
             return $this->app->redirect($this->app["url_generator"]->generate("login"));
         }
-    }
 
-    public function berandaAction(Request $request){
-        if ($request->getMethod() === 'GET') {
-            return $this->app['twig']->render('beranda.twig');
+        if ($request->getPathInfo() === '/login' && $this->app['session']->has('username')) {
+            return $this->app->redirect($this->app["url_generator"]->generate("beranda"));
         }
     }
+
+    /**
+     * @return string
+     */
+    public function berandaAction()
+    {
+        return $this->app['twig']->render('beranda.twig');
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
     public function skpdAction(Request $request)
     {
         $skpdForm = new SkpdForm();
@@ -101,9 +111,7 @@ class AppController implements ControllerProviderInterface
 
         if ($request->getMethod() === 'GET') {
             return $this->app['twig']->render('skpd.twig', ['form' => $formBuilder->createView()]);
-//            return $this->app->redirect($this->app["url_generator"]->generate("login"));
         }
-
 
         $formBuilder->handleRequest($request);
 

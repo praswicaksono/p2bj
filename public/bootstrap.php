@@ -3,68 +3,29 @@
 /**
  * register doctrine
  */
-$app->register(
-    new \Silex\Provider\DoctrineServiceProvider(),
-    [
-        'db.options' => [
-            'driver' => 'pdo_mysql',
-            'host' => '127.0.0.1',
-            'username' => 'root',
-            'password' => 'faster',
-            'dbname' => 'p2bj'
-        ]
-    ]
-);
+$app->register(new \Silex\Provider\DoctrineServiceProvider(), $config['db']);
 
 /**
  * register doctrine orm
  */
-$app->register(
-    new \Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider(),
-    [
-        'orm.em.options' => [
-            'mappings' => [
-                [
-                    'type' => 'annotation',
-                    'namespace' => 'Jowy\P2bj\Domain\Entity',
-                    'path' => __DIR__ . '/../src/Domain/Entity',
-                ]
-            ],
-        ],
-        'orm.proxies_dir' => __DIR__ . '/../app/proxies/',
-    ]
-);
+$app->register(new \Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider(), $config['orm']);
 
 /**
  * twig templating
  */
-$app->register(
-    new \Silex\Provider\TwigServiceProvider(),
-    [
-        'twig.path' => __DIR__ . '/../src/Templates',
-        'twig.options' => [
-            'cache' => __DIR__ . '/../app/cache/app_template',
-            'auto_reload' => true
-        ]
-    ]
-);
+$app->register(new \Silex\Provider\TwigServiceProvider(), $config['twig']);
 
 /**
  * logging
  */
-$app->register(
-    new \Silex\Provider\MonologServiceProvider(),
-    ['monolog.logfile' => __DIR__ . '/../app/logs/development.log']
-);
+$app->register(new \Silex\Provider\MonologServiceProvider());
 
 /**
  * register web profiler
  */
 if ($app['debug']) {
     Symfony\Component\Debug\Debug::enable(E_ALL, true);
-    $app->register(new Silex\Provider\WebProfilerServiceProvider(), [
-        'profiler.cache_dir' => __DIR__ . '/../app/cache/profiler'
-    ]);
+    $app->register(new Silex\Provider\WebProfilerServiceProvider(), $config['profiler']);
 }
 
 /**
@@ -102,6 +63,9 @@ $app->register(new \Silex\Provider\HttpFragmentServiceProvider());
  */
 $app->register(new \Silex\Provider\ValidatorServiceProvider());
 
+/**
+ * register entity repository
+ */
 $app['user.repository'] = function () use ($app) {
     return $app['orm.em']->getRepository(\Jowy\P2bj\Domain\Entity\User::class);
 };

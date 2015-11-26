@@ -3,20 +3,19 @@ $loader = require __DIR__ . '/../vendor/autoload.php';
 
 \Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 
+$config = require __DIR__ . '/../app/config.php';
+
 $app = new \Silex\Application(
-    [
-        'debug' => true,
-        'dokumen.path' => __DIR__ . '/dokumen'
-    ]
+    $config['common']
 );
 
 require "bootstrap.php";
 
-$app->mount('/', new \Jowy\P2bj\Http\Controller\AppController($app));
-
-$app->get('/', function() use($app){
-	return $app;
+$app->get('/', function () use ($app) {
+    return $app->redirect($app["url_generator"]->generate("beranda"));
 });
+
+$app->mount('/', new \Jowy\P2bj\Http\Controller\AppController($app));
 
 $app->error(function (\Exception $e, $code) {
     switch ($code) {
