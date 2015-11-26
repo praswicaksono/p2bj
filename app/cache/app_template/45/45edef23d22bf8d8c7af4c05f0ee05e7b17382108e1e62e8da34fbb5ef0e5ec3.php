@@ -17,13 +17,13 @@ class __TwigTemplate_aba9991b4f7dc270922b2123928fbbb3efd6306365ee96ab6e728983ea2
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_df13002f0cb743c2fa4216d76a9863ef7ca89195e224575529a18bf38cc3eefc = $this->env->getExtension("native_profiler");
-        $__internal_df13002f0cb743c2fa4216d76a9863ef7ca89195e224575529a18bf38cc3eefc->enter($__internal_df13002f0cb743c2fa4216d76a9863ef7ca89195e224575529a18bf38cc3eefc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "layouts/head.twig"));
+        $__internal_a078a82f8f5d471c201bbf99253ff2f1540892d322c017abe6b0bb8a58f68195 = $this->env->getExtension("native_profiler");
+        $__internal_a078a82f8f5d471c201bbf99253ff2f1540892d322c017abe6b0bb8a58f68195->enter($__internal_a078a82f8f5d471c201bbf99253ff2f1540892d322c017abe6b0bb8a58f68195_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "layouts/head.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
-<html>
 
+<html>
 <head>
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset=\"utf-8\">
@@ -323,10 +323,7 @@ class __TwigTemplate_aba9991b4f7dc270922b2123928fbbb3efd6306365ee96ab6e728983ea2
             </li>
             <li class=\"dropdown\">
                 <a href=\"#\" class=\"dropdown-toggle fw600 p15\" data-toggle=\"dropdown\"> <img src=\"assets/img/avatars/1.jpg\" alt=\"avatar\" class=\"mw30 br64 mr15\">
-                    <span>";
-        // line 303
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["appController"]) ? $context["appController"] : $this->getContext($context, "appController")), "session", array()), "username", array()), "html", null, true);
-        echo "</span>
+                    <span></span>
                     <span class=\"caret caret-tp hidden-xs\"></span>
                 </a>
                 <ul class=\"dropdown-menu dropdown-persist pn w250 bg-white\" role=\"menu\">
@@ -590,28 +587,28 @@ class __TwigTemplate_aba9991b4f7dc270922b2123928fbbb3efd6306365ee96ab6e728983ea2
 </html>
 ";
         
-        $__internal_df13002f0cb743c2fa4216d76a9863ef7ca89195e224575529a18bf38cc3eefc->leave($__internal_df13002f0cb743c2fa4216d76a9863ef7ca89195e224575529a18bf38cc3eefc_prof);
+        $__internal_a078a82f8f5d471c201bbf99253ff2f1540892d322c017abe6b0bb8a58f68195->leave($__internal_a078a82f8f5d471c201bbf99253ff2f1540892d322c017abe6b0bb8a58f68195_prof);
 
     }
 
     // line 405
     public function block_content($context, array $blocks = array())
     {
-        $__internal_6681bc175ca7e6a3eeba14dcce0402081907a8221a0d2ad77fee6b2dd68fbfc2 = $this->env->getExtension("native_profiler");
-        $__internal_6681bc175ca7e6a3eeba14dcce0402081907a8221a0d2ad77fee6b2dd68fbfc2->enter($__internal_6681bc175ca7e6a3eeba14dcce0402081907a8221a0d2ad77fee6b2dd68fbfc2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_cb2f03138fedc22759c2f7b29510a8203fd93162f0bcad1bb8f3e74fd2ead9e3 = $this->env->getExtension("native_profiler");
+        $__internal_cb2f03138fedc22759c2f7b29510a8203fd93162f0bcad1bb8f3e74fd2ead9e3->enter($__internal_cb2f03138fedc22759c2f7b29510a8203fd93162f0bcad1bb8f3e74fd2ead9e3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 406
         echo "        ";
         
-        $__internal_6681bc175ca7e6a3eeba14dcce0402081907a8221a0d2ad77fee6b2dd68fbfc2->leave($__internal_6681bc175ca7e6a3eeba14dcce0402081907a8221a0d2ad77fee6b2dd68fbfc2_prof);
+        $__internal_cb2f03138fedc22759c2f7b29510a8203fd93162f0bcad1bb8f3e74fd2ead9e3->leave($__internal_cb2f03138fedc22759c2f7b29510a8203fd93162f0bcad1bb8f3e74fd2ead9e3_prof);
 
     }
 
     // line 414
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_d3b1dbf6b8115ff942303db8af96655a85fcf246c3805e31c63a433b50561307 = $this->env->getExtension("native_profiler");
-        $__internal_d3b1dbf6b8115ff942303db8af96655a85fcf246c3805e31c63a433b50561307->enter($__internal_d3b1dbf6b8115ff942303db8af96655a85fcf246c3805e31c63a433b50561307_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_e2849b00a9dd981095b4a82ed1fd8ff7ec8324e60b406b40f927411be6a68619 = $this->env->getExtension("native_profiler");
+        $__internal_e2849b00a9dd981095b4a82ed1fd8ff7ec8324e60b406b40f927411be6a68619->enter($__internal_e2849b00a9dd981095b4a82ed1fd8ff7ec8324e60b406b40f927411be6a68619_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 415
         echo "<script type=\"text/javascript\" src=\"assets/js_theme/jquery/jquery-1.11.1.min.js\"></script>
@@ -647,7 +644,7 @@ class __TwigTemplate_aba9991b4f7dc270922b2123928fbbb3efd6306365ee96ab6e728983ea2
 
     ";
         
-        $__internal_d3b1dbf6b8115ff942303db8af96655a85fcf246c3805e31c63a433b50561307->leave($__internal_d3b1dbf6b8115ff942303db8af96655a85fcf246c3805e31c63a433b50561307_prof);
+        $__internal_e2849b00a9dd981095b4a82ed1fd8ff7ec8324e60b406b40f927411be6a68619->leave($__internal_e2849b00a9dd981095b4a82ed1fd8ff7ec8324e60b406b40f927411be6a68619_prof);
 
     }
 
@@ -656,19 +653,14 @@ class __TwigTemplate_aba9991b4f7dc270922b2123928fbbb3efd6306365ee96ab6e728983ea2
         return "layouts/head.twig";
     }
 
-    public function isTraitable()
-    {
-        return false;
-    }
-
     public function getDebugInfo()
     {
-        return array (  617 => 415,  611 => 414,  604 => 406,  598 => 405,  446 => 447,  444 => 414,  435 => 407,  433 => 405,  328 => 303,  24 => 1,);
+        return array (  614 => 415,  608 => 414,  601 => 406,  595 => 405,  443 => 447,  441 => 414,  432 => 407,  430 => 405,  24 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
-/* <html>*/
 /* */
+/* <html>*/
 /* <head>*/
 /*     <!-- Meta, title, CSS, favicons, etc. -->*/
 /*     <meta charset="utf-8">*/
@@ -968,7 +960,7 @@ class __TwigTemplate_aba9991b4f7dc270922b2123928fbbb3efd6306365ee96ab6e728983ea2
 /*             </li>*/
 /*             <li class="dropdown">*/
 /*                 <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown"> <img src="assets/img/avatars/1.jpg" alt="avatar" class="mw30 br64 mr15">*/
-/*                     <span>{{ appController.session.username }}</span>*/
+/*                     <span></span>*/
 /*                     <span class="caret caret-tp hidden-xs"></span>*/
 /*                 </a>*/
 /*                 <ul class="dropdown-menu dropdown-persist pn w250 bg-white" role="menu">*/
