@@ -28,26 +28,30 @@ class LoginForm extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add
-        (
+        $builder->add(
             'username',
             'text',
             [
-            'constraints' => new Assert\NotBlank(), 'attr' => ['class' => 'gui-input'],'label' => 'Username', 'label_attr' =>
-            ['class' => 'field-label text-muted fs18 mb10']
+                'constraints' => new Assert\NotBlank(),
+                'attr' => ['class' => 'gui-input'],
+                'label' => 'Username',
+                'label_attr' => ['class' => 'field-label text-muted fs18 mb10']
             ]
         )->add(
             'password',
             'password',
             [
-                'constraints' => new Assert\NotBlank(),'attr' => ['class' => 'gui-input'],'label' => 'password', 'label_attr' =>
-            ['class' => 'field-label text-muted fs18 mb10']
+                'constraints' => new Assert\NotBlank(),
+                'attr' => ['class' => 'gui-input'],
+                'label' => 'password',
+                'label_attr' => ['class' => 'field-label text-muted fs18 mb10']
             ]
         )
         ->add(
             'login',
-            'submit',[
-                'attr' => ['class' => 'shit'] 
+            'submit',
+            [
+                'attr' => ['class' => 'button btn-primary mr10 pull-right']
             ]
         );
     }

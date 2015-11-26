@@ -117,7 +117,11 @@ class SkpdForm extends AbstractType
             'namaPaket',
             'text',
             [
-                'constraints' => new Assert\NotBlank(),'attr' => ['class' => 'gui-input','placeholder'=>'Nama Paket Pekerjaan']
+                'constraints' => new Assert\NotBlank(),
+                'attr' => [
+                    'class' => 'gui-input',
+                    'placeholder'=>'Nama Paket Pekerjaan'
+                ]
             ]
         )->add(
             'sumberDana',
@@ -125,7 +129,8 @@ class SkpdForm extends AbstractType
             [
                 'constraints' => new Assert\NotBlank(),
                 'choice_list' => new ChoiceList(
-                    array('APBD','BUMN','MANDIRI'),array('APDB','BUMN','MANDIRI')
+                    ['APBD','BUMN','MANDIRI'],
+                    ['APDB','BUMN','MANDIRI']
                 ),
                 'placeholder' => '-- Sumber Dana --',
                 'empty_data' => null,
@@ -265,25 +270,7 @@ class SkpdForm extends AbstractType
                     'class' => 'gui-file'
                 ]
             ]
-        )
-//            ->add(
-//            'dokumenSpesifikasiTeknis',
-//            'file',
-//            [
-//                'constraints' => [
-//                    new Assert\NotBlank(),
-//                    new Assert\File([
-//                        'maxSize' => '10m'
-//                    ])
-//                ],
-//                'attr' => [
-//                    'class' => 'gui-file',
-//                    'id' => 'file1',
-//                    'onchange' => 'document.getElementById(\'uploader7\').value = this.value'
-//                ]
-//            ]
-//        )
-            ->add(
+        )->add(
             'dokumenGambar',
             'file',
             [
@@ -355,11 +342,13 @@ class SkpdForm extends AbstractType
             ]
         )->add(
             'kirim',
-            'submit',[
-                    'attr' => [
-                        'class' => 'btn btn-success mr10 pull-right'
-                    ],'label' => 'Proses Pengajuan'
-                ]
+            'submit',
+            [
+                'attr' => [
+                    'class' => 'btn btn-success mr10 pull-right'
+                ],
+                'label' => 'Proses Pengajuan'
+            ]
         );
     }
 

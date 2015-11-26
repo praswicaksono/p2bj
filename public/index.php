@@ -17,6 +17,13 @@ $app->get('/', function () use ($app) {
 
 $app->mount('/', new \Jowy\P2bj\Http\Controller\AppController($app));
 
+$app->after(function () use ($app) {
+    if ($app['session']->has('expire') && $app['session']->get('expire')['value'] > time()) {
+        $app['session']->clear();
+    }
+
+});
+
 $app->error(function (\Exception $e, $code) {
     switch ($code) {
         case 404:

@@ -83,12 +83,12 @@ class AppController implements ControllerProviderInterface
      */
     public function checkUserRole(Request $request)
     {
-        if (! $this->app['session']->has('username')) {
-            return $this->app->redirect($this->app["url_generator"]->generate("login"));
-        }
-
         if ($request->getPathInfo() === '/login' && $this->app['session']->has('username')) {
             return $this->app->redirect($this->app["url_generator"]->generate("beranda"));
+        }
+
+        if (! $this->app['session']->has('username') && ! ($request->getPathInfo() === '/login')) {
+            return $this->app->redirect($this->app["url_generator"]->generate("login"));
         }
     }
 
@@ -285,6 +285,8 @@ class AppController implements ControllerProviderInterface
         $this->app['session']->set('role', ['value' => $user->getRole()]);
         $this->app['session']->set('username', ['value' => $user->getUsername()]);
         $this->app['session']->set('uid', ['value' => $user->getId()]);
+        $sessionLifetime = (int) $this->app['session.life'];
+        $this->app['session']->set('expire', ['value' => time() + $sessionLifetime]);
 
         return $this->app->redirect($this->app['url_generator']->generate($user->getRole()));
     }
