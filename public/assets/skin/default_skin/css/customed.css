@@ -1,0 +1,21 @@
+@font-face{
+    font-family: "Lato";
+    src: url("../../../fonts/Lato-Light.ttf");
+}
+
+
+body *{
+    font-family: 'Lato';
+}
+
+div.row.mb15.table-layout h1.h1-logo{
+    font-size: 3em;
+    color: #000;
+}
+div.row.mb15.table-layout h1.h1-logo > small{
+    color: #000;
+}
+
+div#skpd_form > div{
+    padding:5px;
+}

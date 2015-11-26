@@ -33,17 +33,22 @@ class LoginForm extends AbstractType
             'username',
             'text',
             [
-            'constraints' => new Assert\NotBlank()
+            'constraints' => new Assert\NotBlank(), 'attr' => ['class' => 'gui-input'],'label' => 'Username', 'label_attr' =>
+            ['class' => 'field-label text-muted fs18 mb10']
             ]
         )->add(
             'password',
-            'text',
+            'password',
             [
-                'constraints' => new Assert\NotBlank()
+                'constraints' => new Assert\NotBlank(),'attr' => ['class' => 'gui-input'],'label' => 'password', 'label_attr' =>
+            ['class' => 'field-label text-muted fs18 mb10']
             ]
-        )->add(
+        )
+        ->add(
             'login',
-            'submit'
+            'submit',[
+                'attr' => ['class' => 'shit'] 
+            ]
         );
     }
 

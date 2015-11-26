@@ -3,6 +3,7 @@
 namespace Jowy\P2bj\Http\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -16,6 +17,8 @@ class SkpdForm extends AbstractType
     /**
      * @var string
      */
+
+
     private $namaPaket;
 
     /**
@@ -107,49 +110,76 @@ class SkpdForm extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
             'namaPaket',
             'text',
             [
-                'constraints' => new Assert\NotBlank()
+                'constraints' => new Assert\NotBlank(),'attr' => ['class' => 'gui-input','placeholder'=>'Nama Paket Pekerjaan']
             ]
         )->add(
             'sumberDana',
-            'text',
+            'choice',
             [
-                'constraints' => new Assert\NotBlank()
+                'constraints' => new Assert\NotBlank(),
+                'choice_list' => new ChoiceList(
+                    array('APBD','BUMN','MANDIRI'),array('APDB','BUMN','MANDIRI')
+                ),
+                'placeholder' => '-- Sumber Dana --',
+                'empty_data' => null,
+                'attr' => ['class' => 'select']
             ]
         )->add(
             'tahunAnggaran',
             'text',
             [
-                'constraints' => new Assert\NotBlank()
+                'constraints' => new Assert\NotBlank(),
+                'attr' => [
+                    'placeholder' => 'Tahun Anggaran',
+                    'class' => 'gui-input'
+                ]
             ]
         )->add(
             'paguAnggraran',
             'text',
             [
-                'constraints' => new Assert\NotBlank()
+                'constraints' => new Assert\NotBlank(),
+                'attr' => [
+                    'placeholder' => 'Pagu Anggaran',
+                    'class' => 'gui-input'
+                ]
             ]
         )->add(
             'kodeRekening',
             'text',
             [
-                'constraints' => new Assert\NotBlank()
+                'constraints' => new Assert\NotBlank(),
+                'attr' => [
+                    'class' => 'gui-input',
+                    'placeholder' => 'Kode Rekening / MAK'
+                ]
             ]
         )->add(
             'kodeRup',
             'text',
             [
-                'constraints' => new Assert\NotBlank()
+                'constraints' => new Assert\NotBlank(),
+                'attr' => [
+                    'class' => 'gui-input',
+                    'placeholder' => 'Kode RUP (ID Paket)'
+                ]
             ]
         )->add(
             'jenisPembayaran',
             'text',
             [
-                'constraints' => new Assert\NotBlank()
+                'constraints' => new Assert\NotBlank(),
+                'attr' => [
+                    'class' => 'gui-input',
+                    'placeholder' => 'Jenis Kontrak (Cara Pembayaran)'
+                ]
             ]
         )->add(
             'dokumenSuratPermintaanLelang',
@@ -160,6 +190,9 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -171,6 +204,9 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -182,6 +218,9 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -193,6 +232,9 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -204,6 +246,9 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -215,20 +260,30 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
-        )->add(
-            'dokumenSpesifikasiTeknis',
-            'file',
-            [
-                'constraints' => [
-                    new Assert\NotBlank(),
-                    new Assert\File([
-                        'maxSize' => '10m'
-                    ])
-                ]
-            ]
-        )->add(
+        )
+//            ->add(
+//            'dokumenSpesifikasiTeknis',
+//            'file',
+//            [
+//                'constraints' => [
+//                    new Assert\NotBlank(),
+//                    new Assert\File([
+//                        'maxSize' => '10m'
+//                    ])
+//                ],
+//                'attr' => [
+//                    'class' => 'gui-file',
+//                    'id' => 'file1',
+//                    'onchange' => 'document.getElementById(\'uploader7\').value = this.value'
+//                ]
+//            ]
+//        )
+            ->add(
             'dokumenGambar',
             'file',
             [
@@ -237,6 +292,9 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -248,6 +306,9 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -259,6 +320,9 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -270,6 +334,9 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
@@ -281,11 +348,18 @@ class SkpdForm extends AbstractType
                     new Assert\File([
                         'maxSize' => '10m'
                     ])
+                ],
+                'attr' => [
+                    'class' => 'gui-file'
                 ]
             ]
         )->add(
             'kirim',
-            'submit'
+            'submit',[
+                    'attr' => [
+                        'class' => 'btn btn-success mr10 pull-right'
+                    ],'label' => 'Proses Pengajuan'
+                ]
         );
     }
 
