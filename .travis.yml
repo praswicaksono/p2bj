@@ -16,4 +16,4 @@ install:
 
 script:
   - php vendor/bin/phpspec run --no-interaction
-  - php vendor/bin/behat run
+  - php vendor/bin/behat
