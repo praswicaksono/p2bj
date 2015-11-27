@@ -14,6 +14,9 @@ use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Jowy\P2bj\Domain\Repository\ArrayPaketRepository;
 use Jowy\P2bj\Domain\Entity\Log;
+use Jowy\P2bj\Domain\Event\SkpdTelahMengirimPaket;
+use Symfony\Component\EventDispatcher\Event;
+use Jowy\P2bj\Domain\Services\PaketService;
 
 /**
  * Defines application features from the specific context.
@@ -55,8 +58,15 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     private $paketRepository;
 
+    /**
+     * @var Log
+     */
     private $log;
 
+    /**
+     * @var Event
+     */
+    private $event;
     /**
      * Initializes context.
      *
@@ -189,4 +199,38 @@ class FeatureContext implements Context, SnippetAcceptingContext
     {
         $this->log = Log::create('Message', $this->user, $this->paket);
     }
+
+    /**
+     * @Then System akan mempulish event SkpdTelahMengirimPaket
+     */
+    public function systemAkanMempulishEventSkpdtelahmengirimpaket()
+    {
+        $this->event = new SkpdTelahMengirimPaket($this->paket);
+    }
+
+    /**
+     * @Given Mempunyai satu paket dengan status :status
+     */
+    public function mempunyaiSatuPaket($status)
+    {
+        $this->paket = Paket::create($this->user, new InfoPaket(), new ArrayCollection());
+        $this->paket->setStatus($status);
+    }
+
+    /**
+     * @When User mengklik tombol tolak
+     */
+    public function userMengklikTombolTolak()
+    {
+        PaketService::tolak($this->paket);
+    }
+
+    /**
+     * @When User mengklik tombol verifikasi
+     */
+    public function userMengklikTombolVerifikasi()
+    {
+        PaketService::verifikasi($this->paket);
+    }
+
 }

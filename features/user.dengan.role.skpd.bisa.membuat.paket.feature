@@ -1,5 +1,5 @@
 Feature:
-  User bisa membuat paket
+  User dengan role skpd bisa membuat paket
 
 Background:
   Given User sudah teregistrasi di system dengan user id "1" dengan role "skpd"
@@ -24,5 +24,6 @@ Scenario:
   And User mengupload "Syarat-Syarat Khusus Kontrak" dengan nama file "file-10.pdf"
   And User mengupload "Dokumen Pendukung Lain" dengan nama file "file-11.pdf"
   And User mengirim aplikasi paket kepada "P2BJ Pelayanan"
-  Then Status paket harusnya berisi "p2bj"
+  Then Status paket harusnya berisi "pelayanan"
   And System otomatis mencatat log
+  And System akan mempulish event SkpdTelahMengirimPaket

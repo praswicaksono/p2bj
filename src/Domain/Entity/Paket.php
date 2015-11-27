@@ -87,7 +87,7 @@ class Paket
         $paket->user = $user;
         $paket->infoPaket = $infoPaket;
         $paket->dokumen = $dokumen;
-        $paket->status = 'p2bj';
+        $paket->status = 'pelayanan';
 
         return $paket;
     }
