@@ -58,6 +58,12 @@ class AppController implements ControllerProviderInterface
             ->before([$this, 'checkUserRole'])
             ->bind('beranda');
 
+        $controllers->get('/logout', [$this, 'logoutAction'])
+            ->bind('logout');
+
+        $controllers->get('/list', [$this, 'showPaketByStatusAction'])
+            ->bind('listPaket');
+
         return $controllers;
     }
 
@@ -289,5 +295,14 @@ class AppController implements ControllerProviderInterface
         $this->app['session']->set('expire', ['value' => time() + $sessionLifetime]);
 
         return $this->app->redirect($this->app['url_generator']->generate($user->getRole()));
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function logoutAction()
+    {
+        $this->app['session']->clear();
+        return $this->app->redirect($this->app['url_generator']->generate('login'));
     }
 }

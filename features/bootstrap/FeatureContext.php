@@ -9,8 +9,10 @@ use Jowy\P2bj\Domain\Entity\Dokumen;
 use Jowy\P2bj\Domain\Entity\Paket;
 use Behat\Behat\Tester\Exception\PendingException;
 use Doctrine\Common\Collections\ArrayCollection;
+use Jowy\P2bj\Domain\Contracts\Repository\PaketRepositoryInterface;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+use Jowy\P2bj\Domain\Repository\ArrayPaketRepository;
 
 /**
  * Defines application features from the specific context.
@@ -43,6 +45,16 @@ class FeatureContext implements Context, SnippetAcceptingContext
     private $paket;
 
     /**
+     * @var Paket[]
+     */
+    private $paketCollection;
+
+    /**
+     * @var PaketRepositoryInterface
+     */
+    private $paketRepository;
+
+    /**
      * Initializes context.
      *
      * Every scenario gets its own context instance.
@@ -62,8 +74,6 @@ class FeatureContext implements Context, SnippetAcceptingContext
     {
         $this->user = $this->userRepository->findById($userId);
         $this->infoPaket = new InfoPaket();
-        assert($this->user->getId() === $userId);
-        assert($this->user->getRole() === $role);
     }
 
     /**
@@ -145,4 +155,28 @@ class FeatureContext implements Context, SnippetAcceptingContext
     {
         assert($this->paket->getStatus() === $value);
     }
+
+    /**
+     * @When User melihat page list paket
+     */
+    public function userMelihatPageListPaket()
+    {
+        $paket = Paket::create(
+            User::create('username', 'password', 'skpd'),
+            new InfoPaket(),
+            new ArrayCollection()
+        );
+
+        $this->paketRepository = new ArrayPaketRepository($paket);
+    }
+
+    /**
+     * @Then User dapat melihat paket dengan status :status
+     */
+    public function userDapatMelihatPaketDenganStatus($status)
+    {
+         $this->paketCollection = $this->paketRepository->findByStatus($status);
+
+    }
+
 }

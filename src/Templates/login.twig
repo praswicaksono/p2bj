@@ -100,7 +100,8 @@
                                 <div class="pr30">
 
                                     <div class="section">
-                                        {{ form_widget(form) }}
+                                        {{ form_row(form.username) }}
+                                        {{ form_row(form.password) }}
                                     </div>
 
                                 </div>
@@ -108,8 +109,7 @@
                         </div>
                         <!-- end .form-body section -->
                         <div class="panel-footer clearfix p10 ph15">
-                            {{form_widget(form.login,{'attr':{'class':'button btn-primary mr10 pull-right'}}) }}
-                          <button type="submit" class="button btn-primary mr10 pull-right">Login</button>
+                            {{ form_row(form.login) }}
                            <!--  <button type="submit" class="button btn-primary mr10 pull-right">Register</button> -->
                            
                             <label class="switch block switch-primary pull-left input-align mt10">
@@ -122,6 +122,7 @@
 
                         </div>
                         <!-- end .form-footer section -->
+                        {{ form_rest(form) }}
                     </form>
                 </div>
             </div>

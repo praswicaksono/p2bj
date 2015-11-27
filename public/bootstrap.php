@@ -69,3 +69,7 @@ $app->register(new \Silex\Provider\ValidatorServiceProvider());
 $app['user.repository'] = function () use ($app) {
     return $app['orm.em']->getRepository(\Jowy\P2bj\Domain\Entity\User::class);
 };
+
+$app['paket.repository'] = function () use ($app) {
+    return $app['orm.em']->getRepository(\Jowy\P2bj\Domain\Entity\Paket::class);
+};
