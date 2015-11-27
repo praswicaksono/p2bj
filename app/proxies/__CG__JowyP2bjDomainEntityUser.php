@@ -64,10 +64,10 @@ class User extends \Jowy\P2bj\Domain\Entity\User implements \Doctrine\ORM\Proxy\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'role', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'paket', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'updatedAt');
+            return array('__isInitialized__', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'role', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'paket', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'log', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'updatedAt');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'role', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'paket', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'updatedAt');
+        return array('__isInitialized__', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'id', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'username', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'password', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'role', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'paket', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'log', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\User' . "\0" . 'updatedAt');
     }
 
     /**
@@ -351,6 +351,39 @@ class User extends \Jowy\P2bj\Domain\Entity\User implements \Doctrine\ORM\Proxy\
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'timestampableUpdateEvent', array());
 
         return parent::timestampableUpdateEvent();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLog()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLog', array());
+
+        return parent::getLog();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLog($log)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLog', array($log));
+
+        return parent::setLog($log);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addLog(\Jowy\P2bj\Domain\Entity\Log $log)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLog', array($log));
+
+        return parent::addLog($log);
     }
 
 }

@@ -64,10 +64,10 @@ class Paket extends \Jowy\P2bj\Domain\Entity\Paket implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'id', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'user', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'infoPaket', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'dokumen', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'status', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'createdAt', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'updatedAt');
+            return array('__isInitialized__', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'id', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'user', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'infoPaket', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'dokumen', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'log', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'status', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'createdAt', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'updatedAt');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'id', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'user', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'infoPaket', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'dokumen', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'status', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'createdAt', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'updatedAt');
+        return array('__isInitialized__', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'id', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'user', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'infoPaket', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'dokumen', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'log', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'status', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'createdAt', '' . "\0" . 'Jowy\\P2bj\\Domain\\Entity\\Paket' . "\0" . 'updatedAt');
     }
 
     /**
@@ -351,6 +351,39 @@ class Paket extends \Jowy\P2bj\Domain\Entity\Paket implements \Doctrine\ORM\Prox
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'timestampableUpdateEvent', array());
 
         return parent::timestampableUpdateEvent();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLog()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLog', array());
+
+        return parent::getLog();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLog($log)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLog', array($log));
+
+        return parent::setLog($log);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addLog(\Jowy\P2bj\Domain\Entity\Log $log)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLog', array($log));
+
+        return parent::addLog($log);
     }
 
 }
