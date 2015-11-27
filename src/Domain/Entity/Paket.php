@@ -35,10 +35,16 @@ class Paket
     private $infoPaket;
 
     /**
-     * @OneToMany(targetEntity="Jowy\P2bj\Domain\Entity\Dokumen", mappedBy="paket", fetch="EAGER", cascade={"persist"})
-     * @var ArrayCollection
+     * @OneToMany(targetEntity="Jowy\P2bj\Domain\Entity\Dokumen", mappedBy="paket", fetch="EXTRA_LAZY", cascade={"persist"})
+     * @var ArrayCollection|Dokumen[]
      */
     private $dokumen;
+
+    /**
+     * targetEntity="Jowy\P2bj\Domain\Entity\Dokumen", mappedBy="paket", fetch="EXTRA_LAZY", cascade={"persist"}
+     * @var ArrayCollection|Log[]
+     */
+    private $log;
 
     /**
      * @Column(type="string", length=128, nullable=false, name="status")
@@ -57,6 +63,15 @@ class Paket
      * @var \DateTime
      */
     private $updatedAt;
+
+    /**
+     * constructor
+     */
+    public function __construct()
+    {
+        $this->dokumen = new ArrayCollection();
+        $this->log = new ArrayCollection();
+    }
 
     /**
      * @param User $user
@@ -195,7 +210,7 @@ class Paket
      */
     public function timestampableCreateEvent()
     {
-        $this->created_at = new \DateTime();
+        $this->createdAt = new \DateTime();
     }
     /**
      * @PreUpdate
@@ -203,6 +218,30 @@ class Paket
      */
     public function timestampableUpdateEvent()
     {
-        $this->updated_at = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getLog()
+    {
+        return $this->log;
+    }
+
+    /**
+     * @param ArrayCollection $log
+     */
+    public function setLog($log)
+    {
+        $this->log = $log;
+    }
+
+    /**
+     * @param Log $log
+     */
+    public function addLog(Log $log)
+    {
+        $this->log[] = $log;
     }
 }

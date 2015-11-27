@@ -195,7 +195,7 @@ class Dokumen
      */
     public function timestampableCreateEvent()
     {
-        $this->created_at = new \DateTime();
+        $this->createdAt = new \DateTime();
     }
     /**
      * @PreUpdate
@@ -203,6 +203,6 @@ class Dokumen
      */
     public function timestampableUpdateEvent()
     {
-        $this->updated_at = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 }

@@ -41,9 +41,15 @@ class User
 
     /**
      * @OneToMany(targetEntity="Jowy\P2bj\Domain\Entity\Paket", mappedBy="user", fetch="EXTRA_LAZY")
-     * @var ArrayCollection
+     * @var ArrayCollection|Paket[]
      */
     private $paket;
+
+    /**
+     * @OneToMany(targetEntity="Jowy\P2bj\Domain\Entity\Log", mappedBy="user", fetch="EXTRA_LAZY")
+     * @var ArrayCollection|Log[]
+     */
+    private $log;
 
     /**
      * @Column(type="datetime", name="created_at", nullable=false)
@@ -201,7 +207,7 @@ class User
      */
     public function timestampableCreateEvent()
     {
-        $this->created_at = new \DateTime();
+        $this->createdAt = new \DateTime();
     }
     /**
      * @PreUpdate
@@ -209,6 +215,30 @@ class User
      */
     public function timestampableUpdateEvent()
     {
-        $this->updated_at = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getLog()
+    {
+        return $this->log;
+    }
+
+    /**
+     * @param ArrayCollection $log
+     */
+    public function setLog($log)
+    {
+        $this->log = $log;
+    }
+
+    /**
+     * @param Log $log
+     */
+    public function addLog(Log $log)
+    {
+        $this->log[] = $log;
     }
 }
