@@ -25,3 +25,4 @@ Scenario:
   And User mengupload "Dokumen Pendukung Lain" dengan nama file "file-11.pdf"
   And User mengirim aplikasi paket kepada "P2BJ Pelayanan"
   Then Status paket harusnya berisi "p2bj"
+  And System otomatis mencatat log
