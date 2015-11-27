@@ -13,6 +13,7 @@ use Jowy\P2bj\Domain\Contracts\Repository\PaketRepositoryInterface;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Jowy\P2bj\Domain\Repository\ArrayPaketRepository;
+use Jowy\P2bj\Domain\Entity\Log;
 
 /**
  * Defines application features from the specific context.
@@ -53,6 +54,8 @@ class FeatureContext implements Context, SnippetAcceptingContext
      * @var PaketRepositoryInterface
      */
     private $paketRepository;
+
+    private $log;
 
     /**
      * Initializes context.
@@ -179,4 +182,11 @@ class FeatureContext implements Context, SnippetAcceptingContext
 
     }
 
+    /**
+     * @Then System otomatis mencatat log
+     */
+    public function systemOtomatisMencatatLog()
+    {
+        $this->log = Log::create('Message', $this->user, $this->paket);
+    }
 }
