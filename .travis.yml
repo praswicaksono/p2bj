@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 5.6
+
+sudo: false
+
+env:
+  - COMPOSER_OPTS=""
+
+matrix:
+  fast_finish: true
+
+install:
+  - travis_retry composer update $COMPOSER_OPTS
+
+script:
+  - php vendor/bin/phpspec run
+  - php vendor/bin/behat run
