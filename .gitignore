@@ -2,4 +2,5 @@ vendor/
 .idea/
 app/cache/
 app/logs/
+app/proxies/
 public/dokumen/
