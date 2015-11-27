@@ -85,12 +85,19 @@
 
                 <div class="panel panel-info mt10 br-n">
 
-                    {% for message in app.session.getFlashBag.get('message') %}
-                    <strong> <div class="alert alert-danger alert-dismissable" >
+                    {% for message in app.session.getFlashBag.get('message_success') %}
+                    <strong> <div class="alert alert-success alert-dismissable" >
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            Username atau Password salah !
+                            {{ message }}
                         </div>
                     </strong>
+                    {% endfor %}
+                    {% for message in app.session.getFlashBag.get('message_error') %}
+                        <strong> <div class="alert alert-danger alert-dismissable" >
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                {{ message }}
+                            </div>
+                        </strong>
                     {% endfor %}
 
                     <!-- end .form-header section -->

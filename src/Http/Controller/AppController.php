@@ -76,7 +76,7 @@ class AppController implements ControllerProviderInterface
 
         if ($role['value'] !== 'skpd') {
             $this->app['session']->getFlashBag()->add(
-                'message',
+                'message_error',
                 'Anda tidak berhak mengakses fitur ini'
             );
             return $this->app->redirect($this->app["url_generator"]->generate("login"));
@@ -271,7 +271,7 @@ class AppController implements ControllerProviderInterface
 
         if ($user === null) {
             $this->app['session']->getFlashBag()->add(
-                'message',
+                'message_error',
                 'Username tidak ditemukan'
             );
             return $this->app['twig']->render('login.twig', ['form' => $formBuilder->createView()]);
@@ -282,7 +282,7 @@ class AppController implements ControllerProviderInterface
          */
         if (! (new UserPasswordMatcher($loginForm->getPassword(), $user))->match()) {
             $this->app['session']->getFlashBag()->add(
-                'message',
+                'message_error',
                 'Password salah'
             );
             return $this->app['twig']->render('login.twig', ['form' => $formBuilder->createView()]);
@@ -303,6 +303,10 @@ class AppController implements ControllerProviderInterface
     public function logoutAction()
     {
         $this->app['session']->clear();
+        $this->app['session']->getFlashBag()->add(
+            'message_success',
+            'Sukses melakukan logout'
+        );
         return $this->app->redirect($this->app['url_generator']->generate('login'));
     }
 }
