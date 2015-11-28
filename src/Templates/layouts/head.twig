@@ -15,18 +15,19 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/fonts/glyphicons-pro/glyphicons-pro.css">
 
     <!-- Admin Panels CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-plugins/admin-panels/adminpanels.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/admin-tools/admin-plugins/admin-panels/adminpanels.css">
 
     <!-- Admin Forms CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
-    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/customed.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/skin/default_skin/css/customed.css">
 
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="{{ app.request.basepath }}assets/img/favicon.ico">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -193,7 +194,7 @@
     <!-- Start: Header -->
     <header class="navbar navbar-fixed-top bg-light">
         <div class="navbar-branding">
-            <a class="navbar-brand" href="dashboard.html"> <b style="font-size:2em">P2BJ</b><small> SYSTEM</small>
+            <a class="navbar-brand" href="{{ ('/beranda') }}"> <b style="font-size:2em">P2BJ</b><small> SYSTEM</small>
             </a>
             <span id="toggle_sidemenu_l" class="glyphicons glyphicons-show_lines"></span>
             <ul class="nav navbar-nav pull-right hidden">
@@ -243,77 +244,16 @@
                 </a>
             </li>
         </ul>
-        <form class="navbar-form navbar-left navbar-search ml5" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search...">
-            </div>
-        </form>
+        {#<form class="navbar-form navbar-left navbar-search ml5" role="search">#}
+            {#<div class="form-group">#}
+                {#<input type="text" class="form-control" placeholder="Search...">#}
+            {#</div>#}
+        {#</form>#}
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown dropdown-item-slide">
-                <a class="dropdown-toggle pl10 pr10" data-toggle="dropdown" href="#">
-                    <span class="octicon octicon-radio-tower fs18"></span>
-                </a>
-                <ul class="dropdown-menu dropdown-hover dropdown-persist pn w350 bg-white animated animated-shorter fadeIn" role="menu">
-                    <li class="bg-light p8">
-                        <span class="fw600 pl5 lh30"> Notifications</span>
-                        <span class="label label-warning label-sm pull-right lh20 h-20 mt5 mr5">12</span>
-                    </li>
-                    <li class="p10 br-t item-1">
-                        <div class="media">
-                            <a class="media-left" href="#"> <img src="assets/img/avatars/2.jpg" class="mw40" alt="holder-img"> </a>
-                            <div class="media-body va-m">
-                                <h5 class="media-heading mv5">Article <small class="text-muted">- 08/16/22</small> </h5> Last Updated 36 days ago by
-                                <a class="text-system" href="#"> Max </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="p10 br-t item-2">
-                        <div class="media">
-                            <a class="media-left" href="#"> <img src="assets/img/avatars/3.jpg" class="mw40" alt="holder-img"> </a>
-                            <div class="media-body va-m">
-                                <h5 class="media-heading mv5">Article <small class="text-muted">- 08/16/22</small> </h5> Last Updated 36 days ago by
-                                <a class="text-system" href="#"> Max </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="p10 br-t item-3">
-                        <div class="media">
-                            <a class="media-left" href="#"> <img src="assets/img/avatars/4.jpg" class="mw40" alt="holder-img"> </a>
-                            <div class="media-body va-m">
-                                <h5 class="media-heading mv5">Article <small class="text-muted">- 08/16/22</small> </h5> Last Updated 36 days ago by
-                                <a class="text-system" href="#"> Max </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="p10 br-t item-4">
-                        <div class="media">
-                            <a class="media-left" href="#"> <img src="assets/img/avatars/5.jpg" class="mw40" alt="holder-img"> </a>
-                            <div class="media-body va-m">
-                                <h5 class="media-heading mv5">Article <small class="text-muted">- 08/16/22</small> </h5> Last Updated 36 days ago by
-                                <a class="text-system" href="#"> Max </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
+
             <li class="ph10 pv20 hidden-xs"> <i class="fa fa-circle text-tp fs8"></i>
             </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown"> <img src="assets/img/avatars/1.jpg" alt="avatar" class="mw30 br64 mr15">
-                    <span></span>
-                    <span class="caret caret-tp hidden-xs"></span>
-                </a>
-                <ul class="dropdown-menu dropdown-persist pn w250 bg-white" role="menu">
-                    <li class="br-t of-h">
-                        <a href="#" class="fw600 p12 animated animated-short fadeInDown">
-                            <span class="fa fa-gear pr5"></span> Account Settings </a>
-                    </li>
-                    <li class="br-t of-h">
-                        <a href="{{ ('/logout') }}" class="fw600 p12 animated animated-short fadeInDown">
-                            <span class="fa fa-power-off pr5"></span> Logout </a>
-                    </li>
-                </ul>
-            </li>
+
         </ul>
 
     </header>
@@ -327,36 +267,27 @@
             <header class="sidebar-header">
                 <div class="user-menu">
                     <div class="row text-center mbn">
-                        <div class="col-xs-4">
-                            <a href="dashboard.html" class="text-primary" data-toggle="tooltip" data-placement="top" title="Dashboard">
+                        <div class="col-xs-6">
+                            <a href="{{ ('/beranda') }}" class="text-primary" data-toggle="tooltip" data-placement="top" title="Dashboard">
                                 <span class="glyphicons glyphicons-home"></span>
                             </a>
                         </div>
-                        <div class="col-xs-4">
-                            <a href="pages_messages.html" class="text-info" data-toggle="tooltip" data-placement="top" title="Messages">
-                                <span class="glyphicons glyphicons-inbox"></span>
+                        <div class="col-xs-6">
+                            <a href="{{ ('/') }}" class="text-info" data-toggle="tooltip" data-placement="top" title="Pegawai">
+                                <span class="glyphicons glyphicons-user"></span>
                             </a>
                         </div>
-                        <div class="col-xs-4">
-                            <a href="pages_profile.html" class="text-alert" data-toggle="tooltip" data-placement="top" title="Tasks">
-                                <span class="glyphicons glyphicons-bell"></span>
+                        <div class="col-xs-6">
+                            <a href="{{ ('/list') }}" class="text-system" data-toggle="tooltip" data-placement="top" title="Paket">
+                                <span class="glyphicons glyphicons-book"></span>
                             </a>
                         </div>
-                        <div class="col-xs-4">
-                            <a href="pages_timeline.html" class="text-system" data-toggle="tooltip" data-placement="top" title="Activity">
-                                <span class="glyphicons glyphicons-imac"></span>
+                        <div class="col-xs-6">
+                            <a href="{{ ('/logout') }}" class="text-danger" data-toggle="tooltip" data-placement="top" title="Log Out">
+                                <span class="glyphicon glyphicon-share"></span>
                             </a>
                         </div>
-                        <div class="col-xs-4">
-                            <a href="pages_profile.html" class="text-danger" data-toggle="tooltip" data-placement="top" title="Settings">
-                                <span class="glyphicons glyphicons-settings"></span>
-                            </a>
-                        </div>
-                        <div class="col-xs-4">
-                            <a href="pages_gallery.html" class="text-warning" data-toggle="tooltip" data-placement="top" title="Cron Jobs">
-                                <span class="glyphicons glyphicons-restart"></span>
-                            </a>
-                        </div>
+
                     </div>
                 </div>
             </header>
@@ -366,7 +297,7 @@
             <ul class="nav sidebar-menu">
                 <li class="sidebar-label pt20">Menu</li>
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="{{ ('/beranda') }}">
                         <span class="glyphicons glyphicons-home"></span>
                         <span class="sidebar-title">Dashboard</span>
                     </a>
@@ -386,10 +317,6 @@
                             <a href="{{ ('/skpd') }}">
                                 <span class="fa fa-asterisk"></span> Paket Baru </a>
                         </li>
-                        <li>
-                            <a href="admin_plugins-dock.html">
-                                <span class="fa fa-check"></span> Validasi Paket </a>
-                        </li>
                     </ul>
                 </li>
 
@@ -402,6 +329,7 @@
         </div>
     </aside>
     <section id="content_wrapper" class="animated fadeIn">
+
         {% block content %}
         {% endblock %}
     </section>
@@ -412,40 +340,44 @@
 
 <!-- jQuery -->
 {% block javascripts %}
-<script type="text/javascript" src="assets/js_theme/jquery/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="assets/js_theme/jquery/jquery_ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js_theme/jquery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js_theme/jquery/jquery_ui/jquery-ui.min.js"></script>
 
 <!-- Bootstrap -->
-<script type="text/javascript" src="assets/js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js/bootstrap/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="assets/vendor/plugins/datatables/media/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="assets/vendor/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-<script type="text/javascript" src="assets/vendor/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js_theme/plugins/datatables/media/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js_theme/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js_theme/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
 
 <!-- Sparklines CDN -->
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
 
 <!-- Chart Plugins -->
-<script type="text/javascript" src="assets/js_theme/plugins/highcharts/highcharts.js"></script>
-<script type="text/javascript" src="assets/js_theme/plugins/circles/circles.js"></script>
-<script type="text/javascript" src="assets/js_theme/plugins/raphael/raphael.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js_theme/plugins/highcharts/highcharts.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js_theme/plugins/circles/circles.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js_theme/plugins/raphael/raphael.js"></script>
 
 <!-- Holder js  -->
-<script type="text/javascript" src="assets/js/bootstrap/holder.min.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js/bootstrap/holder.min.js"></script>
 
 <!-- Theme Javascript -->
-<script type="text/javascript" src="assets/js/utility/utility.js"></script>
-<script type="text/javascript" src="assets/js/main.js"></script>
-<script type="text/javascript" src="assets/js/demo.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js/utility/utility.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js/main.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js/demo.js"></script>
 
 <!-- Admin Panels  -->
-<script type="text/javascript" src="assets/admin-tools/admin-plugins/admin-panels/json2.js"></script>
-<script type="text/javascript" src="assets/admin-tools/admin-plugins/admin-panels/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="assets/admin-tools/admin-plugins/admin-panels/adminpanels.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/admin-tools/admin-plugins/admin-panels/json2.js"></script>
+
+<script type="text/javascript" src="{{ app.request.basepath }}assets/admin-tools/admin-plugins/admin-panels/jquery.ui.touch-punch.min.js"></script>
+
+<script type="text/javascript" src="{{ app.request.basepath }}assets/admin-tools/admin-plugins/admin-panels/adminpanels.js"></script>
 
 <!-- Page Javascript -->
-<script type="text/javascript" src="assets/js/pages/widgets.js"></script>
-<script type="text/javascript" src="assets/js/customed.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js/pages/widgets.js"></script>
+<script type="text/javascript" src="{{ app.request.basepath }}assets/js/customed.js"></script>
 <script type="text/javascript">
 
     {% endblock %}

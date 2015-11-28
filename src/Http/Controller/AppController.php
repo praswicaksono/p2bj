@@ -64,10 +64,15 @@ class AppController implements ControllerProviderInterface
 
         $controllers->get('/list', [$this, 'showPaketByStatusAction'])
             ->bind('listPaket');
+
         $controllers->get('/approve/{id}', [$this, 'approvePaketbyIdAction'])
             ->bind('approve');
-        $controllers->get('/reject/{id}',[$this,'rejectPaketbyIdAction'])
+
+        $controllers->get('/reject/{id}', [$this,'rejectPaketbyIdAction'])
             ->bind('reject');
+
+        $controllers->get('/review', [$this, 'reviewDokumen'])
+            ->bind('dokumenReview');
 
         return $controllers;
     }
@@ -249,7 +254,10 @@ class AppController implements ControllerProviderInterface
              */
             $dokumen->getFile()->move($dirName, $dokumen->getFilename());
         }
-
+        $this->app['session']->getFlashBag()->add(
+            'message_success',
+            'Sukses Mengajukan Paket'
+        );
         return $this->app['twig']->render('skpd.twig', ['form' => $formBuilder->createView()]);
     }
 
@@ -350,30 +358,63 @@ class AppController implements ControllerProviderInterface
     }
 
     /**
+     * Approval Proccess
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
 
     public function approvePaketbyIdAction()
     {
         $paket = $this->app['paket.repository']->findById($this->app['request']->get('id'));
-        $approvalId = new PaketService();
-        $approvalId->verifikasi($paket);
+        PaketService::verifikasi($paket);
 
         $this->app['orm.em']->persist($paket);
         $this->app['orm.em']->flush();
-
+        $this->app['session']->getFlashBag()->add(
+            'message_success',
+            'Paket telah berhasil di verifikasi dan akan dikirim ke badan selanjutnya'
+        );
         return $this->app->redirect($this->app['url_generator']->generate('listPaket'));
 
     }
+
+    /**
+     * Reject Proccess
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function rejectPaketbyIdAction()
     {
         $paket = $this->app['paket.repository']->findById($this->app['request']->get('id'));
-        $rejectId = new PaketService();
-        $rejectId->tolak($paket);
+        PaketService::tolak($paket);
 
         $this->app['orm.em']->persist($paket);
         $this->app['orm.em']->flush();
-
+        $this->app['session']->getFlashBag()->add(
+            'message_error',
+            'Paket telah berhasil di tolak dan akan dikirimkan kembali'
+        );
         return $this->app->redirect($this->app['url_generator']->generate('listPaket'));
+    }
+
+
+
+    public function reviewDokumen()
+    {
+        $paketId = $this->app['paket.repository']->findById($this->app['request']->get('id'));
+
+        $dokumen = $paketId->getDokumen();
+
+//        foreach ($dokumen as $dokumenBaru) {
+//            $description = $dokumenBaru;
+//            $namaFile = $dokumenBaru->getFileName();
+//            $createdAt = $dokumenBaru->getCreatedAt();
+//
+//
+////            var_dump($paketId->getStatus());
+//        }
+        return $this->app['twig']->render('dokumenReview.twig', ['lists' => $paketId,
+        'descriptions' => $dokumen
+        ]);
+
+
     }
 }

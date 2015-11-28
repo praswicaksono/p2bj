@@ -1,0 +1,59 @@
+{% extends 'layouts/head.twig' %}
+
+{% block content %}
+        <br>
+        <h1 class="lh30 mt15 text-center">Review Dokumen</h1>
+        <p class="lead mb30 text-center">Pembuatan Usulan Paket Pengadaan</p>
+        <hr>
+
+        {#{{ dump(descriptions) }}#}
+
+
+        <div class="row">
+                <div class="col-md-9 center-block">
+                        <div class="panel" id="spy4">
+                                <div class="panel-heading">
+                            <span class="panel-title">
+                                <span class="glyphicons glyphicons-briefcase"></span>Nama Proyek : {{ lists.infoPaket.namaPaket }}</span>
+                                        <div class="pull-right">
+                                                {#<code class="mr20">.table .table-responsive</code>#}
+                                                <span style="margin-right: 25px;">Tanggal Masuk : {{ lists.createdAt|date('d M Y') }}</span>
+                                        </div>
+                                </div>
+                                <div class="panel-body pn">
+                                        <div class="table-responsive">
+                                                <table class="table table-bordered mbn">
+                                                        <thead>
+                                                        <tr>
+                                                                <th>No.</th>
+                                                                <th>Deskripsi</th>
+                                                                <th>File</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% set i = 1 %}
+                                                        {% for des in descriptions %}
+                                                                <tr>
+                                                                        <td>{{ i }}</td>
+                                                                        <td>{{ des.description }}</td>
+                                                                        <td>
+                                                                                {{ des.filename }}
+                                                                                <a href="{{ app.request.basepath }}dokumen/{{ lists.id }}/{{ des.filename }}"><i class="glyphicon glyphicon-new-window pull-right"></i></a>
+                                                                        </td>
+                                                                </tr>
+                                                                {% set i = i + 1 %}
+                                                        {% endfor %}
+                                                        </tbody>
+                                                </table>
+                                        </div>
+                                </div>
+                        </div>
+                        <a href="{{ '/list' }}" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i> Kembali</a>
+                        <div class="pull-right">
+                                <a class="btn btn-success" href="{{ ('/approve/') }}{{ lists.id }}"><i class="glyphicon glyphicon-floppy-saved"></i> Approve</a>&nbsp;&nbsp;
+                                <a class="btn btn-danger" href="{{ ('/reject/') }}{{ lists.id }}"><i class="glyphicon glyphicon-floppy-remove"></i> Reject</a>
+                        </div>
+
+                </div>
+        </div>
+{% endblock %}

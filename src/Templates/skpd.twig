@@ -1,16 +1,3 @@
-{#<html>#}
-    {#<head>#}
-
-    {#</head>#}
-    {#<body>#}
-        {#{% for message in app.session.getFlashBag.get('message') %}#}
-            {#<strong> {{ message }} </strong>#}
-        {#{% endfor %}#}
-        {#<form action="{{app.url_generator.generate('skpd') }}" method="post" enctype="multipart/form-data">#}
-            {#{{ form_widget(form) }}#}
-        {#</form>#}
-    {#</body>#}
-{#</html>#}
 {% extends 'layouts/head.twig' %}
 
 {% block content %}
@@ -21,10 +8,17 @@
 <div class="row">
     <div class="col-md-9 center-block">
 
-                {% for message in app.session.getFlashBag.get('message') %}
+                {% for message in app.session.getFlashBag.get('message_error') %}
                     <strong> <div class="alert alert-danger alert-dismissable" >
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            Whoops Something went wrong
+                            {{ message }}
+                        </div>
+                    </strong>
+                {% endfor %}
+                {% for message in app.session.getFlashBag.get('message_success') %}
+                    <strong> <div class="alert alert-success alert-dismissable" >
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {{ message }}
                         </div>
                     </strong>
                 {% endfor %}
@@ -35,40 +29,13 @@
                         <div class="panel-body">
                             <div class="section-divider mb40 mt20"><span> Lengkapi Data </span></div>
 
-                            {#<div id="skpd_form">#}
-                                {#<div>{{ form_widget(form.namaPaket) }}</div>#}
-                                {#<div>{{ form_widget(form.sumberDana) }}</div>#}
-                                {#<div>{{ form_widget(form.tahunAnggaran) }}</div>#}
-                                {#<div>{{ form_widget(form.paguAnggraran) }}</div>#}
-                                {#<div>{{ form_widget(form.kodeRekening) }}</div>#}
-                                {#<div>{{ form_widget(form.kodeRup) }}</div>#}
-                                {#<div>{{ form_widget(form.jenisPembayaran) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenSuratPermintaanLelang) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenHasilPerkiraanSendiri) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenCetakRup) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenKerangkaAcuanKerja) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenDaftarKuantitas) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenSpesifikasiTeknis) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenGambar) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenRancanganKontrak) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenSyaratSyaratUmumKontrak) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenSyaratSyaratKhususKontrak) }}</div>#}
-                                {#<div>{{ form_widget(form.dokumenPendukungLain) }}</div>#}
-                            {#</div>#}
-
                             {{ form_widget(form) }}
 
 
                         </div>
-                        {#<div class="panel-footer text-right">#}
-                            {#{{ form_widget(form.kirim,{'attr':{'class' : 'mr10 pull-right'}}) }}#}
-                        {#</div>#}
                     </form>
                 </div>
             </div>
     </div>
 </div>
 {% endblock %}
-
-{#{% include "layouts/head.twig" %}#}
-{#{% include "layouts/foot.twig" %}#}
