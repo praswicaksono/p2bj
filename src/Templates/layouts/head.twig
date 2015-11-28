@@ -379,11 +379,11 @@
                     </a>
                     <ul class="nav sub-nav">
                         <li>
-                            <a href="admin_plugins-panels.html">
+                            <a href="{{ ('/list') }}">
                                 <span class="glyphicons glyphicons-book"></span> List Paket </a>
                         </li>
                         <li>
-                            <a href="{{ ('/list') }}">
+                            <a href="{{ ('/skpd') }}">
                                 <span class="fa fa-asterisk"></span> Paket Baru </a>
                         </li>
                         <li>
@@ -418,6 +418,10 @@
 <!-- Bootstrap -->
 <script type="text/javascript" src="assets/js/bootstrap/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="assets/vendor/plugins/datatables/media/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="assets/vendor/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+<script type="text/javascript" src="assets/vendor/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+
 <!-- Sparklines CDN -->
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
 
@@ -441,6 +445,7 @@
 
 <!-- Page Javascript -->
 <script type="text/javascript" src="assets/js/pages/widgets.js"></script>
+<script type="text/javascript" src="assets/js/customed.js"></script>
 <script type="text/javascript">
 
     {% endblock %}

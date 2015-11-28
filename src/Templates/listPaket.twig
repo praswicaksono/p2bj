@@ -1,0 +1,77 @@
+{% extends 'layouts/head.twig' %}
+
+{% block content %}
+
+    <br>
+    <h1 class="lh30 mt15 text-center">LIST PAKET</h1>
+    <p class="lead mb30 text-center">Pembuatan Usulan Paket Pengadaan</p>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-11 center-block">
+
+            {#{{ dump(lists|length) }}#}
+            <div class="col-md-12">
+                <div class="panel panel-visible" id="spy2">
+                    {#<div class="panel-heading">#}
+                    {#<div class="panel-title hidden-xs">#}
+                    {#<span class="glyphicon glyphicon-tasks"></span>Search Bar Filtering</div>#}
+                    {#</div>#}
+                    <div class="panel-body pn">
+                        <table class="table table-striped table-hover" id="datatable2" cellspacing="0" width="100%">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Paket</th>
+                                <th>Sumber Dana</th>
+                                <th>Tahun Anggaran</th>
+                                <th>Pagu Anggaran</th>
+                                <th>Kode Rekening</th>
+                                <th>Kode RUP</th>
+                                <th>Jenis Pembayaran</th>
+                                <th>Aksi</th>
+
+
+                            </tr>
+                            </thead>
+                            {% if (lists|length > 0)%}
+                                {% for list in lists %}
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ list.id }}</td>
+                                        <td>{{ list.infoPaket.namaPaket }}</td>
+                                        <td>{{ list.infoPaket.sumberDana }}</td>
+                                        <td>{{ list.infoPaket.tahunAggaran }}</td>
+                                        <td>Rp. {{ list.infoPaket.paguAnggaran|number_format(2, ',', '.') }}</td>
+                                        <td>{{ list.infoPaket.kodeRekening }}</td>
+                                        <td>{{ list.infoPaket.kodeRup }}</td>
+                                        <td>{{ list.infoPaket.jenisPembayaran }}</td>
+                                        <td>
+                                            <a href="/review" title="Review">
+                                                <i class="fa fa-2x fa-eye" style="color: #649AE1;"></i>
+                                            </a>&nbsp;
+                                            <a href="/approve" title="Approve">
+                                                <i class="fa fa-check fa-2x" style="color: #85D27A;" ></i>
+                                            </a>&nbsp;
+                                            <a href="/reject" title="Reject">
+                                                <i class="fa fa-2x fa-times" style="color: #EC6F5A"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                {% endfor %}
+                            {% else %}
+                                <tbody>
+                                <tr>
+                                    <td colspan="9" style="text-align: center" class="primary">Tidak ada Paket untuk Direview</td>
+                                </tr>
+                                </tbody>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

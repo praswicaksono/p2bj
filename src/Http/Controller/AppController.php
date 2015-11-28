@@ -309,4 +309,36 @@ class AppController implements ControllerProviderInterface
         );
         return $this->app->redirect($this->app['url_generator']->generate('login'));
     }
+
+
+
+    public function showPaketByStatusAction()
+    {
+        $role = $this->app['session']->get('role');
+
+        if ($role['value'] == 'pelayanan') {
+
+            $paketList = $this->app['paket.repository']->findByStatus('pelayanan');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+
+        } elseif ($role['value'] == 'distribusi') {
+
+            $paketList = $this->app['paket.repository']->findByStatus('distribusi');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+
+        } elseif ($role['value'] == 'kaupt') {
+
+            $paketList = $this->app['paket.repository']->findByStatus('kaupt');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+
+        } elseif ($role['value'] == 'pokja') {
+
+            $paketList = $this->app['paket.repository']->findByStatus('pokja');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+
+        } else {
+            $paketList = $this->app['paket.repository']->findByStatus('skpd');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+        }
+    }
 }
