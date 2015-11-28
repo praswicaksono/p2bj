@@ -66,6 +66,8 @@ class AppController implements ControllerProviderInterface
             ->bind('listPaket');
         $controllers->get('/approve/{id}', [$this, 'approvePaketbyIdAction'])
             ->bind('approve');
+        $controllers->get('/reject/{id}',[$this,'rejectPaketbyIdAction'])
+            ->bind('reject');
 
         return $controllers;
     }
@@ -362,5 +364,16 @@ class AppController implements ControllerProviderInterface
 
         return $this->app->redirect($this->app['url_generator']->generate('listPaket'));
 
+    }
+    public function rejectPaketbyIdAction()
+    {
+        $paket = $this->app['paket.repository']->findById($this->app['request']->get('id'));
+        $rejectId = new PaketService();
+        $rejectId->tolak($paket);
+
+        $this->app['orm.em']->persist($paket);
+        $this->app['orm.em']->flush();
+
+        return $this->app->redirect($this->app['url_generator']->generate('listPaket'));
     }
 }
