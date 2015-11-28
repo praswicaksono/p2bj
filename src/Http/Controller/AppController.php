@@ -15,6 +15,7 @@ use Silex\ControllerCollection;
 use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Jowy\P2bj\Domain\Services\PaketService;
 
 /**
  * Class AppController
@@ -63,6 +64,8 @@ class AppController implements ControllerProviderInterface
 
         $controllers->get('/list', [$this, 'showPaketByStatusAction'])
             ->bind('listPaket');
+        $controllers->get('/approve/{id}', [$this, 'approvePaketbyIdAction'])
+            ->bind('approve');
 
         return $controllers;
     }
@@ -311,7 +314,9 @@ class AppController implements ControllerProviderInterface
     }
 
 
-
+    /**
+     * @return List $lists
+     */
     public function showPaketByStatusAction()
     {
         $role = $this->app['session']->get('role');
@@ -340,5 +345,22 @@ class AppController implements ControllerProviderInterface
             $paketList = $this->app['paket.repository']->findByStatus('skpd');
             return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
         }
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+
+    public function approvePaketbyIdAction()
+    {
+        $paket = $this->app['paket.repository']->findById($this->app['request']->get('id'));
+        $approvalId = new PaketService();
+        $approvalId->verifikasi($paket);
+
+        $this->app['orm.em']->persist($paket);
+        $this->app['orm.em']->flush();
+
+        return $this->app->redirect($this->app['url_generator']->generate('listPaket'));
+
     }
 }

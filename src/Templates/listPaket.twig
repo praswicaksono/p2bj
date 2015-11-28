@@ -47,13 +47,13 @@
                                         <td>{{ list.infoPaket.kodeRup }}</td>
                                         <td>{{ list.infoPaket.jenisPembayaran }}</td>
                                         <td>
-                                            <a href="/review" title="Review">
+                                            <a href="/review/{{ list.id }}" title="Review">
                                                 <i class="fa fa-2x fa-eye" style="color: #649AE1;"></i>
                                             </a>&nbsp;
-                                            <a href="/approve" title="Approve">
+                                            <a href="/approve/{{ list.id }}" title="Approve">
                                                 <i class="fa fa-check fa-2x" style="color: #85D27A;" ></i>
                                             </a>&nbsp;
-                                            <a href="/reject" title="Reject">
+                                            <a href="/reject/{{ list.id }}" title="Reject">
                                                 <i class="fa fa-2x fa-times" style="color: #EC6F5A"></i>
                                             </a>
                                         </td>
