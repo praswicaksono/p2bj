@@ -1,8 +1,12 @@
 @font-face{
     font-family: "Lato";
-    src: url("../../../fonts/Lato-Light.ttf");
+    src: url("../../../fonts/Lato-Regular.ttf");
 }
 
+a,a:hover{
+    color: #000;
+    text-decoration: none;
+}
 
 body *{
     font-family: 'Lato';

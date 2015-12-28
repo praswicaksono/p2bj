@@ -15,6 +15,7 @@ use Silex\ControllerCollection;
 use Silex\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Jowy\P2bj\Domain\Services\PaketService;
 
 /**
  * Class AppController
@@ -64,6 +65,15 @@ class AppController implements ControllerProviderInterface
         $controllers->get('/list', [$this, 'showPaketByStatusAction'])
             ->bind('listPaket');
 
+        $controllers->get('/approve/{id}', [$this, 'approvePaketbyIdAction'])
+            ->bind('approve');
+
+        $controllers->get('/reject/{id}', [$this,'rejectPaketbyIdAction'])
+            ->bind('reject');
+
+        $controllers->get('/review', [$this, 'reviewDokumen'])
+            ->bind('dokumenReview');
+
         return $controllers;
     }
 
@@ -76,7 +86,7 @@ class AppController implements ControllerProviderInterface
 
         if ($role['value'] !== 'skpd') {
             $this->app['session']->getFlashBag()->add(
-                'message',
+                'message_error',
                 'Anda tidak berhak mengakses fitur ini'
             );
             return $this->app->redirect($this->app["url_generator"]->generate("login"));
@@ -244,7 +254,10 @@ class AppController implements ControllerProviderInterface
              */
             $dokumen->getFile()->move($dirName, $dokumen->getFilename());
         }
-
+        $this->app['session']->getFlashBag()->add(
+            'message_success',
+            'Sukses Mengajukan Paket'
+        );
         return $this->app['twig']->render('skpd.twig', ['form' => $formBuilder->createView()]);
     }
 
@@ -271,7 +284,7 @@ class AppController implements ControllerProviderInterface
 
         if ($user === null) {
             $this->app['session']->getFlashBag()->add(
-                'message',
+                'message_error',
                 'Username tidak ditemukan'
             );
             return $this->app['twig']->render('login.twig', ['form' => $formBuilder->createView()]);
@@ -282,7 +295,7 @@ class AppController implements ControllerProviderInterface
          */
         if (! (new UserPasswordMatcher($loginForm->getPassword(), $user))->match()) {
             $this->app['session']->getFlashBag()->add(
-                'message',
+                'message_error',
                 'Password salah'
             );
             return $this->app['twig']->render('login.twig', ['form' => $formBuilder->createView()]);
@@ -303,6 +316,105 @@ class AppController implements ControllerProviderInterface
     public function logoutAction()
     {
         $this->app['session']->clear();
+        $this->app['session']->getFlashBag()->add(
+            'message_success',
+            'Sukses melakukan logout'
+        );
         return $this->app->redirect($this->app['url_generator']->generate('login'));
+    }
+
+
+    /**
+     * @return List $lists
+     */
+    public function showPaketByStatusAction()
+    {
+        $role = $this->app['session']->get('role');
+
+        if ($role['value'] == 'pelayanan') {
+
+            $paketList = $this->app['paket.repository']->findByStatus('pelayanan');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+
+        } elseif ($role['value'] == 'distribusi') {
+
+            $paketList = $this->app['paket.repository']->findByStatus('distribusi');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+
+        } elseif ($role['value'] == 'kaupt') {
+
+            $paketList = $this->app['paket.repository']->findByStatus('kaupt');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+
+        } elseif ($role['value'] == 'pokja') {
+
+            $paketList = $this->app['paket.repository']->findByStatus('pokja');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+
+        } else {
+            $paketList = $this->app['paket.repository']->findByStatus('skpd');
+            return $this->app['twig']->render('listPaket.twig', ['lists' => $paketList]);
+        }
+    }
+
+    /**
+     * Approval Proccess
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+
+    public function approvePaketbyIdAction()
+    {
+        $paket = $this->app['paket.repository']->findById($this->app['request']->get('id'));
+        PaketService::verifikasi($paket);
+
+        $this->app['orm.em']->persist($paket);
+        $this->app['orm.em']->flush();
+        $this->app['session']->getFlashBag()->add(
+            'message_success',
+            'Paket telah berhasil di verifikasi dan akan dikirim ke badan selanjutnya'
+        );
+        return $this->app->redirect($this->app['url_generator']->generate('listPaket'));
+
+    }
+
+    /**
+     * Reject Proccess
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function rejectPaketbyIdAction()
+    {
+        $paket = $this->app['paket.repository']->findById($this->app['request']->get('id'));
+        PaketService::tolak($paket);
+
+        $this->app['orm.em']->persist($paket);
+        $this->app['orm.em']->flush();
+        $this->app['session']->getFlashBag()->add(
+            'message_error',
+            'Paket telah berhasil di tolak dan akan dikirimkan kembali'
+        );
+        return $this->app->redirect($this->app['url_generator']->generate('listPaket'));
+    }
+
+
+
+    public function reviewDokumen()
+    {
+        $paketId = $this->app['paket.repository']->findById($this->app['request']->get('id'));
+
+        $dokumen = $paketId->getDokumen();
+
+//        foreach ($dokumen as $dokumenBaru) {
+//            $description = $dokumenBaru;
+//            $namaFile = $dokumenBaru->getFileName();
+//            $createdAt = $dokumenBaru->getCreatedAt();
+//
+//
+////            var_dump($paketId->getStatus());
+//        }
+        return $this->app['twig']->render('dokumenReview.twig', ['lists' => $paketId,
+        'descriptions' => $dokumen
+        ]);
+
+
     }
 }

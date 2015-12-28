@@ -29,14 +29,14 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,300">
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/skin/default_skin/css/theme.css">
 
     <!-- Admin Forms CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/admin-tools/admin-forms/css/admin-forms.css">
-    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/customed.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}assets/skin/default_skin/css/customed.css">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="{{ app.request.basepath }}assets/img/favicon.ico">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -64,33 +64,23 @@
             <div class="admin-form theme-info" id="login1">
 
                 <div class="row mb15 table-layout">
-
-                    {#<div class="col-xs-6 va-m pln">#}
-                        {#<a href="dashboard.html" title="Return to Dashboard">#}
                             <h1 class="h1-logo">P2BJ <small>RPP 1.0</small></h1>
-                            {#<img src="assets/img/logos/logo_white.png" title="AdminDesigns Logo" class="img-responsive w250">#}
-                        {#</a>#}
-                    {#</div>#}
-
-                    {#<div class="col-xs-6 text-right va-b pr5">#}
-                        {#<div class="login-links">#}
-                            {#<a href="pages_login.html" class="active" title="Sign In">Sign In</a>#}
-                            {#<span class="text-white"> | </span>#}
-                            {#<a href="pages_register.html" class="" title="Register">Register</a>#}
-                        {#</div>#}
-
-                    {#</div>#}
-
                 </div>
-
                 <div class="panel panel-info mt10 br-n">
 
-                    {% for message in app.session.getFlashBag.get('message') %}
-                    <strong> <div class="alert alert-danger alert-dismissable" >
+                    {% for message in app.session.getFlashBag.get('message_success') %}
+                    <strong> <div class="alert alert-success alert-dismissable" >
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            Username atau Password salah !
+                            {{ message }}
                         </div>
                     </strong>
+                    {% endfor %}
+                    {% for message in app.session.getFlashBag.get('message_error') %}
+                        <strong> <div class="alert alert-danger alert-dismissable" >
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                {{ message }}
+                            </div>
+                        </strong>
                     {% endfor %}
 
                     <!-- end .form-header section -->
@@ -110,7 +100,6 @@
                         <!-- end .form-body section -->
                         <div class="panel-footer clearfix p10 ph15">
                             {{ form_row(form.login) }}
-                           <!--  <button type="submit" class="button btn-primary mr10 pull-right">Register</button> -->
                            
                             <label class="switch block switch-primary pull-left input-align mt10">
                                 <input type="checkbox" name="remember" id="remember" checked>

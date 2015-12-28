@@ -130,7 +130,7 @@ class SkpdForm extends AbstractType
                 'constraints' => new Assert\NotBlank(),
                 'choice_list' => new ChoiceList(
                     ['APBD','BUMN','MANDIRI'],
-                    ['APDB','BUMN','MANDIRI']
+                    ['APBD','BUMN','MANDIRI']
                 ),
                 'placeholder' => '-- Sumber Dana --',
                 'empty_data' => null,
